@@ -4,32 +4,19 @@ using namespace std;
 
 class Patient
 {
-<<<<<<< HEAD
-private:
-  string nom;
-  string prenom;
-  string date_naissance;
-  string groupe_sanguin;
-  int nsecu;
-  int ntel;
-=======
-
-
-    // Attributs
-
-    string prenom,date_naissance,nom;
-
+  private:
+    string nom;
+    string prenom;
+    date date_naissance;
+    string groupe_sanguin;
     int nsecu;
->>>>>>> db05e3d449877528d4acd10592f1b0d3680c659f
+    int ntel;
 
   public:
     Patient(string,int);
     void affiche_dossier();
     void nouveau_patient();
     ~Patient();
-
-
-
 };
 
 
@@ -37,7 +24,7 @@ private:
 class medecin
 
 {
-private:
+  private:
 
     string Nom;
 
@@ -76,31 +63,29 @@ class rdv
 
 };
 
-class ordonnace
+class ordonnance
 
 {
-
-    void creation ()
-
-    void annulation()
-
-
-
-    // Attributs
-
   private:
-
     string dates_delivrance;
-
     string IDmedecin;
-
     string nsecu;
-
     string traitememt;
 
 public:
-  creation
-
-
+  void creation_rdv();
+  void annulation_rdv();
 
 };
+
+class date
+{
+  private:
+    int jour;
+    int mois;
+    int annee;
+  public:
+    date();
+    nouvelle_date(int,int,int);
+
+}
