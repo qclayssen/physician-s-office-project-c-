@@ -10,6 +10,7 @@ private:
   string date_naissance;
   string groupe_sanguin;
   int nsecu;
+  int ntel;
 
   public:
     Patient(string,int);
