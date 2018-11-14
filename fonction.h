@@ -97,12 +97,3 @@ public:
 
 
 };
-
-class name_t {
-private:
-  /* data */
-
-public:
-  name_t (arguments);
-  virtual ~name_t ();
-};
