@@ -26,7 +26,7 @@ using namespace std;
   medecin::medecin(){
   this->nom = "Prevert";
   this->prenom = "Jacques";
-  this->specialite = "Promptologie";
+  this->specialite = "Proctologie";
   this->idmedecin = "35647986";
   }
 
@@ -45,7 +45,7 @@ using namespace std;
   }
 
   rdv::rdv(date date_rdv, medecin medecin, patient patient);){
-    
+
   }
 
 
