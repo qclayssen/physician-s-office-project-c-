@@ -4,8 +4,7 @@
 
 using namespace std;
 
-int main()
-{
+
   patient::nouveau_patient(string prenom, date date_naissance, string nom, int nsecu){
   this->nsecu = nsecu;
 
@@ -88,5 +87,13 @@ rdv::modif_rdv(){
 }
 
 ordonnance::annulation_ordonnance(){
+
+}
+
+
+
+
+int main()
+{
 
 }
