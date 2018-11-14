@@ -26,17 +26,20 @@ class medecin
 {
   private:
 
-    string Nom;
+    string nom;
 
-    string nsecu;
+    string prenom;
 
     string specialite;
 
   protected:
 
-    string IDmedecin;
+    string idmedecin;
 
   public:
+
+    ordonnace()
+    rdv()
 
 
 
@@ -56,7 +59,7 @@ class rdv
 
     string heure;
 
-    string IDmedecin;
+    string idmedecin;
 
     string nsecu;
 
@@ -68,7 +71,9 @@ class ordonnance
 {
   private:
     string dates_delivrance;
-    string IDmedecin;
+
+    string idmedecin;
+
     string nsecu;
     string traitememt;
 
@@ -88,4 +93,13 @@ class date
     date();
     nouvelle_date(int,int,int);
 
-}
+};
+
+class name_t {
+private:
+  /* data */
+
+public:
+  name_t (arguments);
+  virtual ~name_t ();
+};
