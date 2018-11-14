@@ -58,7 +58,7 @@ int main()
   this->annee= annee;
 
   }
-  ordonnance::nouveau_medicament(sting nom ,string frequence, int dosage,int quantite){
+  ordonnance::nouveau_medicament(string nom ,string frequence, int dosage,int quantite){
   this->nom = nom;
 
   this->frequence = frequence;
@@ -70,4 +70,19 @@ int main()
 
 
   }
+}
+
+patient::affiche_dossier(){
+  cout<<"prenom:"<<prenom<<endl;
+  cout<<"date de naissance:"<<date_naissance<<endl;
+  cout<<"nom:"<<nom<<endl;
+  cout<<"nsecu:"<<nsecu<<endl;
+}
+
+rdv::annulation_rdv(){
+
+}
+
+rdv::modif_rdv(){
+
 }
