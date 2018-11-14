@@ -31,15 +31,18 @@ private:
 
     string nom;
 
-    string nsecu;
+    string prenom;
 
     string specialite;
 
   protected:
 
-    string IDmedecin;
+    string idmedecin;
 
   public:
+
+    ordonnace()
+    rdv()
 
 
 
@@ -59,7 +62,7 @@ class rdv
 
     string heure;
 
-    string IDmedecin;
+    string idmedecin;
 
     string nsecu;
 
@@ -82,7 +85,7 @@ class ordonnace
 
     string dates_delivrance;
 
-    string IDmedecin;
+    string idmedecin;
 
     string nsecu;
 
