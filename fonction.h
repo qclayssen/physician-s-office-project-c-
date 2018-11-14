@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-class Patient
+class patient
 {
   private:
     string nom;
@@ -13,10 +13,8 @@ class Patient
     int ntel;
 
   public:
-    Patient(string,int);
     void affiche_dossier();
     void nouveau_patient();
-    ~Patient();
 };
 
 
