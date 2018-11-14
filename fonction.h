@@ -92,12 +92,3 @@ class date
     nouvelle_date(int,int,int);
 
 };
-
-class name_t {
-private:
-  /* data */
-
-public:
-  name_t (arguments);
-  virtual ~name_t ();
-};
