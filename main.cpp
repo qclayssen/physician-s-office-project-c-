@@ -39,12 +39,12 @@ int main()
 
   }
 
-  ordonnance::nouveau_ordonnance(string idmedecin, date date_delivrance, string traitememt, int nsecu){
-  this->nom = nsecu;
+  ordonnance::nouveau_ordonnance(string idmedecin, date date_delivrance, int nsecu, medicament){
+  this->idmedecin = idmedecin;
 
-  this->prenom = prenom;
+  this->date_delivrance = date_delivrance;
 
-  this->specialite= specialite;
+  this->nsecu= nsecu;
 
   this->idmedecin = nom;
 
