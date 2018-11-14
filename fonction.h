@@ -4,21 +4,6 @@ using namespace std;
 
 class Patient
 {
-    void nouveau ()
-
-    {
-
-    }
-
-
-    void consultation()
-
-    {
-
-
-    }
-
-
 
 
     // Attributs
@@ -49,18 +34,7 @@ class medecin
 
 {
 
-    void ordonnance ()
-
-    {
-
-    }
-
-
-    void rdv()
-
-    {
-
-
+    void
     }
 
 
