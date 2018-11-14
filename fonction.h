@@ -4,31 +4,19 @@ using namespace std;
 
 class Patient
 {
-    void nouveau ()
-
-    {
-
-    }
-
-
-    void consultation()
-
-    {
-
-
-    }
-
-
-
-
-    // Attributs
-
-    string prenom,date_naissance,nom;
-
-    int nsecu;
+private:
+  string nom;
+  string prenom;
+  string date_naissance;
+  string groupe_sanguin;
+  int nsecu;
 
   public:
     Patient(string,int);
+    void affiche_dossier();
+    void nouveau_patient();
+    ~Patient();
+
 
 
 };
