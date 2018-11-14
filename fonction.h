@@ -8,7 +8,11 @@ class Patient
 
     // Attributs
 
-    string prenom,date_naissance,nom;
+    string prenom;
+
+    string date_naissance;
+
+    string nom;
 
     int nsecu;
 
@@ -25,7 +29,7 @@ class medecin
 {
 private:
 
-    string Nom;
+    string nom;
 
     string nsecu;
 

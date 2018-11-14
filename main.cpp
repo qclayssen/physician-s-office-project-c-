@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-  Patient::Patient(string prenom, string date_naissance, string nom, int nsecu){
+  patient::patient(string prenom, string date_naissance, string nom, int nsecu){
   this->nsecu = nsecu;
 
   this->prenom = prenom;
@@ -17,14 +17,14 @@ int main()
 
   }
 
-  Patient::Patient(string prenom, string date_naissance, string nom, int nsecu){
-  this->nsecu = nsecu;
+  medecin::medecin(string nom, string date_naissance, string nom, int nsecu){
+  this->nom = nsecu;
 
   this->prenom = prenom;
 
-  this->date_naissance = date_naissance;
+  this->specialite= specialite;
 
-  this->nom = nom;
+  this->idmedecin = nom;
 
   }
 
