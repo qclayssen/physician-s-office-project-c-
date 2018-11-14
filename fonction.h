@@ -14,7 +14,7 @@ class patient
     int nsecu;
   public:
     void affiche_dossier();
-    void nouveau_patient();
+    void nouveau_patient(string,string,date,string,int,int);
 };
 
 class medecin
@@ -26,7 +26,7 @@ class medecin
   protected:
     string idmedecin;
   public:
-    void nouveau_medecin()
+    void nouveau_medecin(string,string,string,string)
 };
 
 class rdv
@@ -36,8 +36,9 @@ class rdv
     string idmedecin;
     string nsecu;
   public:
-    void nouveau_rdv()
-    void annulation_rdv()
+    void nouveau_rdv(date,string,string);
+    void modif_rdv();
+    void annulation_rdv();
 };
 
 
@@ -50,7 +51,7 @@ class ordonnance
     string traitememt;
 
 public:
-  void nouvelle_ordonnance();
+  void nouvelle_ordonnance(string,string,string,string);
   void annulation_ordonnance();
 };
 
@@ -74,5 +75,5 @@ class medicament
     int dosage;
     int quantite;
   public:
-    void nouveau_medicament(string_quantite,string,quantite)
+    void nouveau_medicament(string,string,int,int)
 }
