@@ -2,6 +2,19 @@
 #include <string>
 using namespace std;
 
+
+class date
+{
+  private:
+    string jour;
+    string mois;
+    string annee;
+  public:
+    date();
+    date(string jour, string mois,string annee);
+};
+
+
 class patient
 {
   private:
@@ -9,12 +22,12 @@ class patient
     string prenom;
     date date_naissance;
     string groupe_sanguin;
-    int ntel;
-  protected:
-    int nsecu;
+    string ntel;
+    streing nsecu;
   public:
+    patient();
+    patient(string nom,string prenom,date date_naissance,string groupe_sanguin,string ntel, string secu);
     void affiche_dossier();
-    void nouveau_patient(string,string,date,string,int,int);
 };
 
 class medecin
@@ -23,47 +36,21 @@ class medecin
     string nom;
     string prenom;
     string specialite;
-  protected:
     string idmedecin;
   public:
-    void nouveau_medecin(string,string,string,string)
+    medecin();
+    medecin(string nom,string prenom,string specialite,string idmedecin);
 };
 
 class rdv
 {
   private:
     date date_rdv;
-    string idmedecin;
-    string nsecu;
   public:
-    void nouveau_rdv(date,string,string);
+    rdv();
+    rdv(date date_rdv, medecin medecin, patient patient);
     void modif_rdv();
     void annulation_rdv();
-};
-
-
-class ordonnance
-{
-  private:
-    string dates_delivrance;
-    string idmedecin;
-    string nsecu;
-    string traitememt;
-
-public:
-  void nouvelle_ordonnance(string,string,string,string);
-  void annulation_ordonnance();
-};
-
-
-class date
-{
-  private:
-    int jour;
-    int mois;
-    int annee;
-  public:;
-    void nouvelle_date(int,int,int);
 };
 
 
@@ -75,5 +62,21 @@ class medicament
     int dosage;
     int quantite;
   public:
-    void nouveau_medicament(string,string,int,int)
-}
+    medicament();
+    medicament(string nom,string frequence,int dosage,int quantite);
+};
+
+
+class ordonnance
+{
+  private:
+    string dates_delivrance;
+    string idmedecin;
+    string nsecu;
+    medicament traitememt;
+
+public:
+  ordonnance();
+  ordonnance(string date,string idmedecin,string nsecu,medicament traitement);
+  void annulation_ordonnance();
+};
