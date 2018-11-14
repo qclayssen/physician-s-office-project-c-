@@ -17,7 +17,6 @@ class patient
     void nouveau_patient();
 };
 
-
 class medecin
 {
   private:
