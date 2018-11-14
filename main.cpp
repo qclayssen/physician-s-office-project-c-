@@ -86,3 +86,7 @@ rdv::annulation_rdv(){
 rdv::modif_rdv(){
 
 }
+
+ordonnance::annulation_ordonnance(){
+
+}
