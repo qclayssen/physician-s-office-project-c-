@@ -39,16 +39,35 @@ int main()
 
   }
 
-  ordonnance::nouveau_ordonnance(string idmedecin, date date_delivrance, int nsecu, medicament){
+  ordonnance::nouvelle_ordonnance(string idmedecin, date date_delivrance, int nsecu, medicament){
   this->idmedecin = idmedecin;
 
   this->date_delivrance = date_delivrance;
 
   this->nsecu= nsecu;
 
-  this->idmedecin = nom;
+  this->liste_medicament = liste_medicament;
 
   }
 
+  ordonnance::nouvelle_date(int jour, int mois, int annee){
+  this->jour = jour;
 
+  this->mois = mois;
+
+  this->annee= annee;
+
+  }
+  ordonnance::nouveau_medicament(sting nom ,string frequence, int dosage,int quantite){
+  this->nom = nom;
+
+  this->frequence = frequence;
+
+  this->dosage= dosage;
+
+  this->quantite= quantite;
+
+
+
+  }
 }
