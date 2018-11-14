@@ -18,36 +18,25 @@ class Patient
 
 };
 
-Patient::Patient(string prenom, string date_naissance, string nom, int nsecu){
-this->nsecu = nsecu;
-
-this->prenom = prenom;
-
-this->date_naissance = date_naissance;
-
-this->nom = nom;
-
-}
 
 
 class medecin
 
 {
-
-    void
-    }
-
-
-
-    // Attributs
+private:
 
     string Nom;
-
-    string IDmedecin;
 
     string nsecu;
 
     string specialite;
+
+  protected:
+
+    string IDmedecin;
+
+  public:
+
 
 
 };
@@ -58,17 +47,7 @@ class rdv
 
     void creation ()
 
-    {
-
-    }
-
-
     void annulation()
-
-    {
-
-
-    }
 
 
 
@@ -89,21 +68,13 @@ class ordonnace
 
     void creation ()
 
-    {
-
-    }
-
-
     void annulation()
-
-    {
-
-
-    }
 
 
 
     // Attributs
+
+  private:
 
     string dates_delivrance;
 
@@ -112,6 +83,10 @@ class ordonnace
     string nsecu;
 
     string traitememt;
+
+public:
+  creation
+
 
 
 };
