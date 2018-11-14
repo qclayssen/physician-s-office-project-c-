@@ -9,77 +9,52 @@ class patient
     string prenom;
     date date_naissance;
     string groupe_sanguin;
-    int nsecu;
     int ntel;
-
+  protected:
+    int nsecu;
   public:
     void affiche_dossier();
     void nouveau_patient();
 };
 
 
-
 class medecin
-
 {
   private:
-
     string nom;
-
     string prenom;
-
     string specialite;
-
   protected:
-
     string idmedecin;
-
   public:
-
-    ordonnace()
-    rdv()
-
-
-
+    void nouveau_medecin()
 };
 
 class rdv
-
 {
-
-    void creation ()
-
-    void annulation()
-
-
-
-    // Attributs
-
-    string heure;
-
+  private:
+    date date_rdv;
     string idmedecin;
-
     string nsecu;
-
-
+  public:
+    void nouveau_rdv()
+    void annulation_rdv()
 };
 
-class ordonnance
 
+class ordonnance
 {
   private:
     string dates_delivrance;
-
     string idmedecin;
-
     string nsecu;
     string traitememt;
 
 public:
-  void creation_rdv();
-  void annulation_rdv();
-
+  void nouvelle_ordonnance();
+  void annulation_ordonnance();
 };
+
 
 class date
 {
@@ -87,8 +62,18 @@ class date
     int jour;
     int mois;
     int annee;
-  public:
-    date();
-    nouvelle_date(int,int,int);
-
+  public:;
+    void nouvelle_date(int,int,int);
 };
+
+
+class medicament
+{
+  private:
+    string nom;
+    string frequence;
+    int dosage;
+    int quantite;
+  public:
+    void nouveau_medicament(string_quantite,string,quantite)
+}
