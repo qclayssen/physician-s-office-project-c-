@@ -12,43 +12,62 @@ class date
   public:
     date();
     date(string jour, string mois,string annee);
+    void set(string jour, string mois,string annee);
+    string getJour();
+    string getMois();
+    string getAnnee();
+    void affiche_date();
 };
 
 
 class patient
 {
-  private:
-    string nom;
-    string prenom;
+protected:
+    string nomPatient;
+    string prenomPatient;
     date date_naissance;
     string groupe_sanguin;
     string ntel;
-    streing nsecu;
-  public:
+    string nsecu;
+public:
     patient();
-    patient(string nom,string prenom,date date_naissance,string groupe_sanguin,string ntel, string secu);
+    patient(string nomPatient,string prenomPatient,date date_naissance,string groupe_sanguin,string ntel, string secu);
+    void set(string nomPatient,string prenomPatient,date date_naissance,string groupe_sanguin,string ntel, string secu);
+    string getNomPatient();
+    string getPrenomPatient();
+    date getDateNaissance();
+    string getGroupeSanguin();
+    string getNtel();
+    string getNsecu();
     void affiche_dossier();
+
 };
 
 class medecin
 {
-  private:
-    string nom;
-    string prenom;
+protected:
+    string nomMedecin;
+    string prenomMedecin;
     string specialite;
     string idmedecin;
-  public:
+public:
     medecin();
-    medecin(string nom,string prenom,string specialite,string idmedecin);
+    medecin(string nomMedecin,string prenomMedecin,string specialite,string idmedecin);
+    void set(string nom,string prenom,string specialite,string idmedecin);
+    string getNomMedecin();
+    string getPrenomMedecin();
+    string getSpecialite();
+    string getIdMedcin();
+    void affiche_medecin();
 };
 
-class rdv
+class rdv : public medecin,public patient
 {
-  private:
+private:
     date date_rdv;
-  public:
+public:
     rdv();
-    rdv(date date_rdv, medecin medecin, patient patient);
+    rdv(date date_rdv);
     void modif_rdv();
     void annulation_rdv();
 };
@@ -56,27 +75,25 @@ class rdv
 
 class medicament
 {
-  private:
-    string nom;
+private:
+    string nomMedicament;
     string frequence;
     int dosage;
     int quantite;
-  public:
+public:
     medicament();
-    medicament(string nom,string frequence,int dosage,int quantite);
+    medicament(string nomMedicament,string frequence,int dosage,int quantite);
 };
 
 
-class ordonnance
+class ordonnance:public medecin, public patient
 {
-  private:
-    string dates_delivrance;
-    string idmedecin;
-    string nsecu;
+private:
+    date date_delivrance;
     medicament traitememt;
 
 public:
   ordonnance();
-  ordonnance(string date,string idmedecin,string nsecu,medicament traitement);
+  ordonnance(date date_delivrance,string idmedecin,string nsecu,medicament traitement);
   void annulation_ordonnance();
 };
