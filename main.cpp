@@ -252,4 +252,9 @@ int main()
   ordonnance ordo;
   ordo.affiche_ordonnance();
 
+
+/*
+  cout<<"Que voulez vous faire "
+  cin>>recherche*/
+
 }
