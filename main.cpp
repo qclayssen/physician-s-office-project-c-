@@ -163,7 +163,7 @@ using namespace std;
   }
 
   medicament::medicament(){
-  this->nomMedicament ="paracetamol";
+  this->nom_medicamant ="paracetamol";
   this->frequence = "2/jours";
   this->dosage= 500;
   this->quantite= 20;
@@ -171,14 +171,14 @@ using namespace std;
 
 
   medicament::medicament(string nommedicament ,string frequence, int dosage,int quantite){
-  this->nomMedicament = nommedicament;
+  this->nom_medicamant = nommedicament;
   this->frequence = frequence;
   this->dosage= dosage;
   this->quantite= quantite;
 }
 
 void medicament::set(string nommedicament ,string frequence, int dosage,int quantite){
-this->nomMedicament = nommedicament;
+this->nom_medicamant = nommedicament;
 this->frequence = frequence;
 this->dosage= dosage;
 this->quantite= quantite;
@@ -186,7 +186,7 @@ this->quantite= quantite;
 
 
 string medicament::getNomMedicament(){
-  return nomMedicament;
+  return nom_medicamant;
 }
 
 string medicament::getFrequence(){
@@ -202,7 +202,7 @@ int medicament::getQuantite(){
 }
 
 void medicament::affiche_medicament(){
-  cout<<"Nom du médicament: "<<nomMedicament<<endl;
+  cout<<"Nom du médicament: "<<nom_medicamant<<endl;
   cout<<"frequence de prise par jour: "<<frequence<<endl;
   cout<<"dosage: "<<dosage<<endl;
   cout<<"quantite: "<<quantite<<endl;
