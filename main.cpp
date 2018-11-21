@@ -90,7 +90,7 @@ using namespace std;
   this->dosage= "500";
   this->quantite= "20";
   }
-}
+
 
   medicament::medicament(string nommedicament ,string frequence, int dosage,int quantite){
   this->nomMedicament = nommedicament;
@@ -98,7 +98,7 @@ using namespace std;
   this->dosage= dosage;
   this->quantite= quantite;
   }
-}
+
 
 patient::affiche_dossier(){
   cout<<"prenom:"<<prenom<<endl;
@@ -116,7 +116,7 @@ rdv::annulation_rdv(){
 
 }*/
 
-rdv::modif_rdv(date date, medecin medecin, patient patient){
+void rdv::modif_rdv(date date, medecin medecin, patient patient){
   this->date_rdv = date_rdv;
   this->medecin = medecin;
   this->patient = patient;
