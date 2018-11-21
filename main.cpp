@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include <string>
-
+#include "fonction.h"
 using namespace std;
 
   patient::patient(){
@@ -19,7 +19,7 @@ using namespace std;
   this->date_naissance = date_naissance;
   this->nom = nom;
   this->groupe_sanguin=groupe_sanguin
-  this->nsecu=nsecu
+  this->ntel=ntel
   }
 
 
