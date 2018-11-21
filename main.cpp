@@ -6,48 +6,47 @@ using namespace std;
 
   patient::patient(){
     this->nsecu="1974425365478";
-    this->prenomPatient="Jean";
-    this->nomPatient="Dupont";
+    this->prenom_patient="Jean";
+    this->nom_patient="Dupont";
     this->date_naissance=date("09","01","1997");
     this->groupe_sanguin="AO";
     this->ntel="0699324578";
   }
 
-  void patient::affiche_dossier(){
-    cout<<"prenom:"<<prenomPatient<<endl;
-    cout<<"date de naissance:"<<date_naissance.jour<<"/"<<date_naissance.mois<<"/"<<date_naissance.annee<<"/"<<endl;
-    cout<<"nom:"<<nomPatient<<endl;
+  patient::patient(string nompatient,string prenompatient,date date_naissance,string groupe_sanguin,string ntel, string nsecu){
+  this->nsecu = nsecu;
+  this->prenom_patient = prenompatient;
+  this->date_naissance = date_naissance;
+  this->nom_patient = nompatient;
+  this->groupe_sanguin=groupe_sanguin;
+  this->ntel=ntel;
+  }
+
+  void patient::affichePatient(){
+    cout<<"prenom:"<<prenom_patient<<endl;
+    cout<<"date de naissance:"<<date_naissance.jour<<"/"<<date_naissance.mois<<"/"<<date_naissance.annee<<endl;
+    cout<<"nom:"<<nom_patient<<endl;
     cout<<"nsecu:"<<nsecu<<endl;
     cout<<"numero telephone:"<<ntel<<endl;
     cout<<"groupe sanguin:"<<groupe_sanguin<<endl;
   }
 
-
-  patient::patient(string nompatient,string prenompatient,date date_naissance,string groupe_sanguin,string ntel, string nsecu){
-  this->nsecu = nsecu;
-  this->prenomPatient = prenompatient;
-  this->date_naissance = date_naissance;
-  this->nomPatient = nompatient;
-  this->groupe_sanguin=groupe_sanguin;
-  this->ntel=ntel;
-  }
-
   void patient::set(string nompatient,string prenompatient,date date_naissance,string groupe_sanguin,string ntel, string nsecu){
     this->nsecu = nsecu;
-    this->prenomPatient = prenompatient;
+    this->prenom_patient = prenompatient;
     this->date_naissance = date_naissance;
-    this->nomPatient = nompatient;
+    this->nom_patient = nompatient;
     this->groupe_sanguin=groupe_sanguin;
     this->ntel=ntel;
     }
 
 
   string patient::getNomPatient(){
-    return nomPatient;
+    return nom_patient;
   }
 
   string patient::getPrenomPatient(){
-    return prenomPatient;
+    return prenom_patient;
   }
 
   date patient::getDateNaissance(){
@@ -99,12 +98,23 @@ using namespace std;
     return nomMedecin;
   }
 
-  string medecin::getNomMedecin(){
-    return nomMedecin;
+  string medecin::getPrenomMedecin(){
+    return prenomMedecin;
   }
 
+  string medecin::getSpecialite(){
+    return specialite;
+  }
 
+  string medecin::getIdMedecin(){
+    return idmedecin;
+  }
 
+  void medecin::affiche_medecin(){
+    cout<<"Nom : "<<nomMedecin<<" "<<prenomMedecin<<endl;
+    cout<<"specialite: "<<specialite<<endl;
+    cout<<"id: "<<idmedecin<<endl;
+  }
 
 
 
@@ -136,9 +146,9 @@ using namespace std;
   }*/
   void ordonnance::affiche_ordonnance(){
     cout<<"Médecin: "<<nomMedecin<<" "<<prenomMedecin<<endl;
-    cout<<"Patient: "<<nomPatient<<" "<<prenomPatient<<endl;
-    cout<<"Date de l'ordonnance: "<<date_delivrance.jour<<"/"<<date_delivrance.mois<<"/"<<date_delivrance.annee<<"/"<<endl;
-    cout<<"Medicament: "<<traitement.nomMedicament<<endl;
+    cout<<"Patient: "<<nom_patient<<" "<<prenom_patient<<endl;
+    cout<<"Date de l'ordonnance: "<<date_delivrance.jour<<"/"<<date_delivrance.mois<<"/"<<date_delivrance.annee<<endl;
+    cout<<"Medicament: "<<traitement.getNomMedicament()<<endl;
   }
 
 
@@ -171,6 +181,36 @@ using namespace std;
   this->quantite= quantite;
 }
 
+void medicament::set(string nommedicament ,string frequence, int dosage,int quantite){
+this->nomMedicament = nommedicament;
+this->frequence = frequence;
+this->dosage= dosage;
+this->quantite= quantite;
+}
+
+
+string medicament::getNomMedicament(){
+  return nomMedicament;
+}
+
+string medicament::getFrequence(){
+  return frequence;
+}
+
+int medicament::getDosage(){
+  return dosage;
+}
+
+int medicament::getQuantite(){
+  return quantite;
+}
+
+void medicament::affiche_medicament(){
+  cout<<"Nom du médicament: "<<nomMedicament<<endl;
+  cout<<"frequence de prise par jour: "<<frequence<<endl;
+  cout<<"dosage: "<<dosage<<endl;
+  cout<<"quantite: "<<quantite<<endl;
+}
 
 
 
@@ -199,7 +239,7 @@ ordonnance::annulation_ordonnance(){
 int main()
 {
   patient a;
-  a.affiche_dossier();
+  a.affichePatient();
 
   ordonnance ordo;
   ordo.affiche_ordonnance();

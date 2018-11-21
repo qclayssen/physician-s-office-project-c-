@@ -23,23 +23,23 @@ public:
 class patient
 {
 protected:
-    string nomPatient;
-    string prenomPatient;
+    string nom_patient;
+    string prenom_patient;
     date date_naissance;
     string groupe_sanguin;
     string ntel;
     string nsecu;
 public:
     patient();
-    patient(string nomPatient,string prenomPatient,date date_naissance,string groupe_sanguin,string ntel, string secu);
-    void set(string nomPatient,string prenomPatient,date date_naissance,string groupe_sanguin,string ntel, string secu);
+    patient(string nom_patient,string prenom_patient,date date_naissance,string groupe_sanguin,string ntel, string secu);
+    void set(string nom_patient,string prenom_patient,date date_naissance,string groupe_sanguin,string ntel, string secu);
     string getNomPatient();
     string getPrenomPatient();
     date getDateNaissance();
     string getGroupeSanguin();
     string getNtel();
     string getNsecu();
-    void affiche_dossier();
+    void affichePatient();
 
 };
 
@@ -57,7 +57,7 @@ public:
     string getNomMedecin();
     string getPrenomMedecin();
     string getSpecialite();
-    string getIdMedcin();
+    string getIdMedecin();
     void affiche_medecin();
 };
 
@@ -77,12 +77,12 @@ public:
 
 class medicament
 {
-public:
+private:
     string nomMedicament;
     string frequence;
     int dosage;
     int quantite;
-
+public:
     medicament();
     medicament(string nomMedicament,string frequence,int dosage,int quantite);
     void set(string nomMedicament,string frequence,int dosage,int quantite);
