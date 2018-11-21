@@ -66,40 +66,35 @@ using namespace std;
   }
 
 
-
-
-
-
-
   medecin::medecin(){
-  this->nomMedecin = "Prevert";
-  this->prenomMedecin = "Jacques";
+  this->nom_medecin = "Prevert";
+  this->prenom_medecin = "Jacques";
   this->specialite = "Proctologie";
   this->idmedecin = "35647986";
   }
 
   medecin::medecin(string nommedecin, string prenommedecin, string specialite, string idmedecin){
-  this->nomMedecin = nommedecin;
-  this->prenomMedecin = prenommedecin;
+  this->nom_medecin = nommedecin;
+  this->prenom_medecin = prenommedecin;
   this->specialite= specialite;
   this->idmedecin = idmedecin;
   }
 
 
   void medecin::set(string nommedecin, string prenommedecin, string specialite, string idmedecin){
-  this->nomMedecin = nommedecin;
-  this->prenomMedecin = prenommedecin;
+  this->nom_medecin = nommedecin;
+  this->prenom_medecin = prenommedecin;
   this->specialite= specialite;
   this->idmedecin = idmedecin;
   }
 
 
   string medecin::getNomMedecin(){
-    return nomMedecin;
+    return nom_medecin;
   }
 
   string medecin::getPrenomMedecin(){
-    return prenomMedecin;
+    return prenom_medecin;
   }
 
   string medecin::getSpecialite(){
@@ -111,7 +106,7 @@ using namespace std;
   }
 
   void medecin::affiche_medecin(){
-    cout<<"Nom : "<<nomMedecin<<" "<<prenomMedecin<<endl;
+    cout<<"Nom : "<<nom_medecin<<" "<<prenom_medecin<<endl;
     cout<<"specialite: "<<specialite<<endl;
     cout<<"id: "<<idmedecin<<endl;
   }
@@ -123,13 +118,15 @@ using namespace std;
   }
 
 
-/*
-  rdv::rdv(date date_rdv, medecin medecin, patient patient);){
+
+
+
+  rdv::rdv(date date_rdv);){
     this->date_rdv = date;
     this->medecin = medecin;
     this->patient = patient;
 
-  }*/
+  }
 
 
   ordonnance::ordonnance():medecin(),patient(){
@@ -142,10 +139,9 @@ using namespace std;
     this->date_delivrance = date_delivrance;
     this->nsecu= nsecu;
     this->liste_medicament = liste_medicament;
-
   }*/
   void ordonnance::affiche_ordonnance(){
-    cout<<"Médecin: "<<nomMedecin<<" "<<prenomMedecin<<endl;
+    cout<<"Médecin: "<<nom_medecin<<" "<<prenom_medecin<<endl;
     cout<<"Patient: "<<nom_patient<<" "<<prenom_patient<<endl;
     cout<<"Date de l'ordonnance: "<<date_delivrance.jour<<"/"<<date_delivrance.mois<<"/"<<date_delivrance.annee<<endl;
     cout<<"Medicament: "<<traitement.getNomMedicament()<<endl;

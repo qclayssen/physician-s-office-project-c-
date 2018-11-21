@@ -46,14 +46,14 @@ public:
 class medecin
 {
 protected:
-    string nomMedecin;
-    string prenomMedecin;
+    string nom_medecin;
+    string prenom_medecin;
     string specialite;
     string idmedecin;
 public:
     medecin();
-    medecin(string nomMedecin,string prenomMedecin,string specialite,string idmedecin);
-    void set(string nommedecin,string prenommedecin,string specialite,string idmedecin);
+    medecin(string nom_medecin,string prenom_medecin,string specialite,string idmedecin);
+    void set(string nom_medecin,string prenom_medecin,string specialite,string idmedecin);
     string getNomMedecin();
     string getPrenomMedecin();
     string getSpecialite();
