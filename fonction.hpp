@@ -68,6 +68,8 @@ private:
 public:
     rdv();
     rdv(date date_rdv);
+    void set(date date_rdv);
+    date getDateRdv();
     void modif_rdv();
     void annulation_rdv();
 };
@@ -83,6 +85,12 @@ private:
 public:
     medicament();
     medicament(string nomMedicament,string frequence,int dosage,int quantite);
+    void set(string nomMedicament,string frequence,int dosage,int quantite);
+    string getNomMedicament();
+    string getFrequence();
+    int getDosage();
+    int getQuantite();
+    void affiche_medicament();
 };
 
 
@@ -94,6 +102,9 @@ private:
 
 public:
   ordonnance();
-  ordonnance(date date_delivrance,string idmedecin,string nsecu,medicament traitement);
+  ordonnance(date date_delivrance,medicament traitement);
+  void set(date date_delivrance,medicament traitement);
+  date getDateDeliverance();
+  medicament getMedicament();
   void annulation_ordonnance();
 };
