@@ -16,12 +16,12 @@ using namespace std;
   }
 
   patient::patient(string nompatient,string prenompatient,date date_naissance,string groupe_sanguin,string ntel, string nsecu){
-  this->nsecu = nsecu;
-  this->prenom_patient = prenompatient;
-  this->date_naissance = date_naissance;
-  this->nom_patient = nompatient;
-  this->groupe_sanguin=groupe_sanguin;
-  this->ntel=ntel;
+    this->nsecu = nsecu;
+    this->prenom_patient = prenompatient;
+    this->date_naissance = date_naissance;
+    this->nom_patient = nompatient;
+    this->groupe_sanguin=groupe_sanguin;
+    this->ntel=ntel;
   }
 
   void patient::affichePatient(){
@@ -69,25 +69,25 @@ using namespace std;
 //////////////// MEDECIN /////////////////
 
   medecin::medecin(){
-  this->nom_medecin = "Prevert";
-  this->prenom_medecin = "Jacques";
-  this->specialite = "Proctologie";
-  this->idmedecin = "35647986";
+    this->nom_medecin = "Prevert";
+    this->prenom_medecin = "Jacques";
+    this->specialite = "Proctologie";
+    this->idmedecin = "35647986";
   }
 
   medecin::medecin(string nommedecin, string prenommedecin, string specialite, string idmedecin){
-  this->nom_medecin = nommedecin;
-  this->prenom_medecin = prenommedecin;
-  this->specialite= specialite;
-  this->idmedecin = idmedecin;
+    this->nom_medecin = nommedecin;
+    this->prenom_medecin = prenommedecin;
+    this->specialite= specialite;
+    this->idmedecin = idmedecin;
   }
 
 
   void medecin::set(string nommedecin, string prenommedecin, string specialite, string idmedecin){
-  this->nom_medecin = nommedecin;
-  this->prenom_medecin = prenommedecin;
-  this->specialite= specialite;
-  this->idmedecin = idmedecin;
+    this->nom_medecin = nommedecin;
+    this->prenom_medecin = prenommedecin;
+    this->specialite= specialite;
+    this->idmedecin = idmedecin;
   }
 
   string medecin::getNomMedecin(){
@@ -116,12 +116,29 @@ using namespace std;
 //////////////// RDV /////////////////
 
   rdv::rdv(): medecin(),patient(){
-  this->date_rdv = date("12","04","2019");
+    this->date_rdv = date("12","04","2019");
   }
 
   rdv::rdv(date date_rdv): medecin(),patient(){
     this->date_rdv = date_rdv;
   }
+
+  /*
+  rdv::annulation_rdv(){
+    this->date_rdv = delete;
+    this->medecin = NULL;
+    this->patient = NULL;
+  }
+
+
+  void rdv::modif_rdv(date date, medecin medecin, patient patient){
+    this->date_rdv = date_rdv;
+    this->medecin = medecin;
+    this->patient = patient;
+
+  }
+
+  */
 
 
 //////////////// ORDONNANCE /////////////////
@@ -148,16 +165,16 @@ using namespace std;
 //////////////// DATE /////////////////
 
   date::date(){
-  this->jour = "09";
-  this->mois = "01";
-  this->annee= "1997";
+    this->jour = "09";
+    this->mois = "01";
+    this->annee= "1997";
 
   }
 
   date::date(string jour, string mois, string annee){
-  this->jour = jour;
-  this->mois = mois;
-  this->annee= annee;
+    this->jour = jour;
+    this->mois = mois;
+    this->annee= annee;
 
   }
 
@@ -165,74 +182,50 @@ using namespace std;
   //////////////// MEDICAMENT /////////////////
 
   medicament::medicament(){
-  this->nom_medicamant ="paracetamol";
-  this->frequence = "2/jours";
-  this->dosage= 500;
-  this->quantite= 20;
+    this->nom_medicamant ="paracetamol";
+    this->frequence = "2/jours";
+    this->dosage= 500;
+    this->quantite= 20;
   }
 
 
   medicament::medicament(string nommedicament ,string frequence, int dosage,int quantite){
-  this->nom_medicamant = nommedicament;
-  this->frequence = frequence;
-  this->dosage= dosage;
-  this->quantite= quantite;
-}
+    this->nom_medicamant = nommedicament;
+    this->frequence = frequence;
+    this->dosage= dosage;
+    this->quantite= quantite;
+  }
 
-void medicament::set(string nommedicament ,string frequence, int dosage,int quantite){
-this->nom_medicamant = nommedicament;
-this->frequence = frequence;
-this->dosage= dosage;
-this->quantite= quantite;
-}
-
-
-string medicament::getNomMedicament(){
-  return nom_medicamant;
-}
-
-string medicament::getFrequence(){
-  return frequence;
-}
-
-int medicament::getDosage(){
-  return dosage;
-}
-
-int medicament::getQuantite(){
-  return quantite;
-}
-
-void medicament::affiche_medicament(){
-  cout<<"Nom du médicament: "<<nom_medicamant<<endl;
-  cout<<"frequence de prise par jour: "<<frequence<<endl;
-  cout<<"dosage: "<<dosage<<endl;
-  cout<<"quantite: "<<quantite<<endl;
-}
+  void medicament::set(string nommedicament ,string frequence, int dosage,int quantite){
+    this->nom_medicamant = nommedicament;
+    this->frequence = frequence;
+    this->dosage= dosage;
+    this->quantite= quantite;
+  }
 
 
+  string medicament::getNomMedicament(){
+    return nom_medicamant;
+  }
 
-/*
-rdv::annulation_rdv(){
-  this->date_rdv = delete;
-  this->medecin = NULL;
-  this->patient = NULL;
+  string medicament::getFrequence(){
+    return frequence;
+  }
 
+  int medicament::getDosage(){
+    return dosage;
+  }
 
+  int medicament::getQuantite(){
+    return quantite;
+  }
 
-void rdv::modif_rdv(date date, medecin medecin, patient patient){
-  this->date_rdv = date_rdv;
-  this->medecin = medecin;
-  this->patient = patient;
-
-}
-
-ordonnance::annulation_ordonnance(){
-
-}
-
-*/
-
+  void medicament::affiche_medicament(){
+    cout<<"Nom du médicament: "<<nom_medicamant<<endl;
+    cout<<"frequence de prise par jour: "<<frequence<<endl;
+    cout<<"dosage: "<<dosage<<endl;
+    cout<<"quantite: "<<quantite<<endl;
+  }
 
 int main()
 {
