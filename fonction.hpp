@@ -107,4 +107,5 @@ public:
   date getDateDeliverance();
   medicament getMedicament();
   void annulation_ordonnance();
+  void affiche_ordonnance();
 };
