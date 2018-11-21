@@ -92,11 +92,11 @@ using namespace std;
   this->frequence = frequence;
   this->dosage= dosage;
   this->quantite= quantite;
-  }
+}
 
 
 void patient::affiche_dossier(){
-  cout<<"prenom:"<<prenompatient<<endl;
+  cout<<"prenom:"<<prenomPatient<<endl;
   cout<<"date de naissance:"<<date_naissance<<endl;
   cout<<"nom:"<<nomPatient<<endl;
   cout<<"nsecu:"<<nsecu<<endl;
