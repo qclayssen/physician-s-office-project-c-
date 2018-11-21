@@ -38,10 +38,8 @@ using namespace std;
   }
 
 
-  rdv::rdv(){
+  rdv::rdv(): medecin(),patient(){
   this->date_rdv = date("12","04","2019");
-  this->medecin = medecin("Zola","Emile","Radiologie","6489975");
-  this->patient = patient("Jean","Dupont",date("09","01","1997"),"AO","0699324578", "1974425365478");
   }
 
 
@@ -51,24 +49,21 @@ using namespace std;
     this->medecin = medecin;
     this->patient = patient;
 
-  }
+  }*/
 
 
-  ordonnance::ordonnance(){
-  this->medecin = idmedecin;
-  this->date_delivrance = date_delivrance;
-  this->nsecu= nsecu;
-  this->liste_medicament = liste_medicament;
-
-}*/
-
+  ordonnance::ordonnance():medecin(),patient(){
+    this->date_delivrance = date("12","04","2019");
+    this->traitement =medicament("paracetamol","2/jour",500,20);
+}
+/*
   ordonnance::ordonnance(medecin medecin, date date_delivrance, patient patient, medicament liste_medicament){
-  this->medecin = medecin("Zola","Emile","Radiologie","6489975");
-  this->date_delivrance = date("12","04","2019");
-  this->patient= patient("Jean","Dupont",date("09","01","1997"),"AO","0699324578", "1974425365478");
-  this->medicament =medicament("paracetamol","2/jour","500","20")t;
+    this->medecin = idmedecin;
+    this->date_delivrance = date_delivrance;
+    this->nsecu= nsecu;
+    this->liste_medicament = liste_medicament;
 
-  }
+  }*/
 
   date::date(){
   this->jour = "09";
@@ -77,7 +72,7 @@ using namespace std;
 
   }
 
-  date::date(int jour, int mois, int annee){
+  date::date(string jour, string mois, string annee){
   this->jour = jour;
   this->mois = mois;
   this->annee= annee;
@@ -87,8 +82,8 @@ using namespace std;
   medicament::medicament(){
   this->nomMedicament ="paracetamol";
   this->frequence = "2/jours";
-  this->dosage= "500";
-  this->quantite= "20";
+  this->dosage= 500;
+  this->quantite= 20;
   }
 
 
@@ -100,10 +95,10 @@ using namespace std;
   }
 
 
-patient::affiche_dossier(){
-  cout<<"prenom:"<<prenom<<endl;
+void patient::affiche_dossier(){
+  cout<<"prenom:"<<prenompatient<<endl;
   cout<<"date de naissance:"<<date_naissance<<endl;
-  cout<<"nom:"<<nom<<endl;
+  cout<<"nom:"<<nomPatient<<endl;
   cout<<"nsecu:"<<nsecu<<endl;
 }
 

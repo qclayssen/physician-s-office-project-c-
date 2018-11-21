@@ -98,7 +98,7 @@ class ordonnance:public medecin, public patient
 {
 private:
     date date_delivrance;
-    medicament traitememt;
+    medicament traitement;
 
 public:
   ordonnance();
