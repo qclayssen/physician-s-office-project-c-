@@ -9,6 +9,7 @@ public:
     string jour;
     string mois;
     string annee;
+
     date();
     date(string jour, string mois,string annee);
     void set(string jour, string mois,string annee);
@@ -52,7 +53,7 @@ protected:
 public:
     medecin();
     medecin(string nomMedecin,string prenomMedecin,string specialite,string idmedecin);
-    void set(string nom,string prenom,string specialite,string idmedecin);
+    void set(string nommedecin,string prenommedecin,string specialite,string idmedecin);
     string getNomMedecin();
     string getPrenomMedecin();
     string getSpecialite();
@@ -76,12 +77,12 @@ public:
 
 class medicament
 {
-private:
+public:
     string nomMedicament;
     string frequence;
     int dosage;
     int quantite;
-public:
+
     medicament();
     medicament(string nomMedicament,string frequence,int dosage,int quantite);
     void set(string nomMedicament,string frequence,int dosage,int quantite);

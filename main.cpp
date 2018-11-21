@@ -32,6 +32,45 @@ using namespace std;
   this->ntel=ntel;
   }
 
+  void patient::set(string nompatient,string prenompatient,date date_naissance,string groupe_sanguin,string ntel, string nsecu){
+    this->nsecu = nsecu;
+    this->prenomPatient = prenompatient;
+    this->date_naissance = date_naissance;
+    this->nomPatient = nompatient;
+    this->groupe_sanguin=groupe_sanguin;
+    this->ntel=ntel;
+    }
+
+
+  string patient::getNomPatient(){
+    return nomPatient;
+  }
+
+  string patient::getPrenomPatient(){
+    return prenomPatient;
+  }
+
+  date patient::getDateNaissance(){
+    return date_naissance;
+  }
+
+  string patient::getGroupeSanguin(){
+    return groupe_sanguin;
+  }
+
+  string patient::getNtel(){
+    return ntel;
+  }
+
+  string patient::getNsecu(){
+    return nsecu;
+  }
+
+
+
+
+
+
 
   medecin::medecin(){
   this->nomMedecin = "Prevert";
@@ -46,6 +85,27 @@ using namespace std;
   this->specialite= specialite;
   this->idmedecin = idmedecin;
   }
+
+
+  void medecin::set(string nommedecin, string prenommedecin, string specialite, string idmedecin){
+  this->nomMedecin = nommedecin;
+  this->prenomMedecin = prenommedecin;
+  this->specialite= specialite;
+  this->idmedecin = idmedecin;
+  }
+
+
+  string medecin::getNomMedecin(){
+    return nomMedecin;
+  }
+
+  string medecin::getNomMedecin(){
+    return nomMedecin;
+  }
+
+
+
+
 
 
   rdv::rdv(): medecin(),patient(){
@@ -75,7 +135,10 @@ using namespace std;
 
   }*/
   void ordonnance::affiche_ordonnance(){
-    cout<<this->nomMedecin<<endl;
+    cout<<"Médecin: "<<nomMedecin<<" "<<prenomMedecin<<endl;
+    cout<<"Patient: "<<nomPatient<<" "<<prenomPatient<<endl;
+    cout<<"Date de l'ordonnance: "<<date_delivrance.jour<<"/"<<date_delivrance.mois<<"/"<<date_delivrance.annee<<"/"<<endl;
+    cout<<"Medicament: "<<traitement.nomMedicament<<endl;
   }
 
 
@@ -135,7 +198,10 @@ ordonnance::annulation_ordonnance(){
 
 int main()
 {
-  patient ordonnance;
-  ordonnance.affiche_dossier();
+  patient a;
+  a.affiche_dossier();
+
+  ordonnance ordo;
+  ordo.affiche_ordonnance();
 
 }
