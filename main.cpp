@@ -13,6 +13,16 @@ using namespace std;
     this->ntel="0699324578";
   }
 
+  void patient::affiche_dossier(){
+    cout<<"prenom:"<<prenomPatient<<endl;
+    cout<<"date de naissance:"<<date_naissance.jour<<"/"<<date_naissance.mois<<"/"<<date_naissance.annee<<"/"<<endl;
+    cout<<"nom:"<<nomPatient<<endl;
+    cout<<"nsecu:"<<nsecu<<endl;
+    cout<<"numero telephone:"<<ntel<<endl;
+    cout<<"groupe sanguin:"<<groupe_sanguin<<endl;
+  }
+
+
   patient::patient(string nompatient,string prenompatient,date date_naissance,string groupe_sanguin,string ntel, string nsecu){
   this->nsecu = nsecu;
   this->prenomPatient = prenompatient;
@@ -64,6 +74,10 @@ using namespace std;
     this->liste_medicament = liste_medicament;
 
   }*/
+  void ordonnance::affiche_ordonnance(){
+    cout<<this->nomMedecin<<endl;
+  }
+
 
   date::date(){
   this->jour = "09";
@@ -95,12 +109,6 @@ using namespace std;
 }
 
 
-void patient::affiche_dossier(){
-  cout<<"prenom:"<<prenomPatient<<endl;
-  cout<<"date de naissance:"<<date_naissance.jour<<date_naissance.mois<<date_naissance.annee<<endl;
-  cout<<"nom:"<<nomPatient<<endl;
-  cout<<"nsecu:"<<nsecu<<endl;
-}
 
 
 /*
@@ -127,7 +135,7 @@ ordonnance::annulation_ordonnance(){
 
 int main()
 {
-  patient Antoine;
-  Antoine.affiche_dossier();
+  patient ordonnance;
+  ordonnance.affiche_dossier();
 
 }
