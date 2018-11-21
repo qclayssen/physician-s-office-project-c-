@@ -5,11 +5,11 @@ using namespace std;
 
 class date
 {
-public:
+private:
     string jour;
     string mois;
     string annee;
-
+public:
     date();
     date(string jour, string mois,string annee);
     void set(string jour, string mois,string annee);
@@ -22,7 +22,7 @@ public:
 
 class patient
 {
-protected:
+private:
     string nom_patient;
     string prenom_patient;
     date date_naissance;
@@ -45,7 +45,7 @@ public:
 
 class medecin
 {
-protected:
+private:
     string nom_medecin;
     string prenom_medecin;
     string specialite;
@@ -61,15 +61,19 @@ public:
     void affiche_medecin();
 };
 
-class rdv : public medecin,public patient
+class rdv
 {
 private:
     date date_rdv;
+    medecin medecin_rdv;
+    patient patient_rdv;
 public:
     rdv();
-    rdv(date date_rdv);
-    void set(date date_rdv);
+    rdv(date date_rdv, medecin medecin_rdv, patient patient);
+    void set(date date_rdv, medecin medecin_rdv, patient patient_rdv);
     date getDateRdv();
+    medecin getMedecinRdv();
+    patient getPatientRdv();
     void modif_rdv();
     void annulation_rdv();
 };
@@ -77,7 +81,7 @@ public:
 
 class medicament
 {
-private:
+protected:
     string nom_medicamant;
     string frequence;
     int dosage;
@@ -94,18 +98,20 @@ public:
 };
 
 
-class ordonnance:public medecin, public patient
+class ordonnance : public medicament
 {
 private:
-    date date_delivrance;
-    medicament traitement;
+    date date_ordo;
+    patient patient_ordo;
+    medecin medecin_ordo;
 
 public:
   ordonnance();
-  ordonnance(date date_delivrance,medicament traitement);
-  void set(date date_delivrance,medicament traitement);
+  ordonnance(date date_ordo,patient patient_ordo, medecin medecin_ordo);
+  void set(date date_ordo,patient patient_ordo, medecin medecin_ordo);
   date getDateDeliverance();
-  medicament getMedicament();
+  medecin getMedecinOrdo();
+  patient getPatientOrdo();
   void annulation_ordonnance();
   void affiche_ordonnance();
 };

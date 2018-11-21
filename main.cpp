@@ -26,7 +26,7 @@ using namespace std;
 
   void patient::affichePatient(){
     cout<<"prenom:"<<prenom_patient<<endl;
-    cout<<"date de naissance:"<<date_naissance.jour<<"/"<<date_naissance.mois<<"/"<<date_naissance.annee<<endl;
+    cout<<"date de naissance:"<<date_naissance.getJour()<<"/"<<date_naissance.getMois()<<"/"<<date_naissance.getAnnee()<<endl;
     cout<<"nom:"<<nom_patient<<endl;
     cout<<"nsecu:"<<nsecu<<endl;
     cout<<"numero telephone:"<<ntel<<endl;
@@ -115,12 +115,16 @@ using namespace std;
 
 //////////////// RDV /////////////////
 
-  rdv::rdv(): medecin(),patient(){
-    this->date_rdv = date("12","04","2019");
+  rdv::rdv(){
+    this->date_rdv = date();
+    this->patient_rdv = patient();
+    this->medecin_rdv = medecin();
   }
 
-  rdv::rdv(date date_rdv): medecin(),patient(){
+  rdv::rdv(date date_rdv, medecin medecin_rdv, patient patient_rdv){
     this->date_rdv = date_rdv;
+    this->patient_rdv = patient_rdv;
+    this->medecin_rdv = medecin_rdv;
   }
 
   /*
@@ -143,22 +147,23 @@ using namespace std;
 
 //////////////// ORDONNANCE /////////////////
 
-  ordonnance::ordonnance():medecin(),patient(){
-    this->date_delivrance = date("12","04","2019");
-    this->traitement =medicament("paracetamol","2/jour",500,20);
+  ordonnance::ordonnance(): medicament(){
+    this->date_ordo = date();
+    this->patient_ordo = patient();
+    this->medecin_ordo = medecin();
 }
 /*
-  ordonnance::ordonnance(medecin medecin, date date_delivrance, patient patient, medicament liste_medicament){
+  ordonnance::ordonnance(medecin medecin, date date_ordo, patient patient, medicament liste_medicament){
     this->medecin = idmedecin;
-    this->date_delivrance = date_delivrance;
+    this->date_ordo = date_ordo;
     this->nsecu= nsecu;
     this->liste_medicament = liste_medicament;
   }*/
   void ordonnance::affiche_ordonnance(){
-    cout<<"Médecin: "<<nom_medecin<<" "<<prenom_medecin<<endl;
-    cout<<"Patient: "<<nom_patient<<" "<<prenom_patient<<endl;
-    cout<<"Date de l'ordonnance: "<<date_delivrance.jour<<"/"<<date_delivrance.mois<<"/"<<date_delivrance.annee<<endl;
-    cout<<"Medicament: "<<traitement.getNomMedicament()<<endl;
+    cout<<"Médecin: "<<medecin_ordo.getNomMedecin()<<" "<<medecin_ordo.getPrenomMedecin()<<endl;
+    cout<<"Patient: "<<patient_ordo.getNomPatient()<<" "<<patient_ordo.getPrenomPatient()<<endl;
+    cout<<"Date de l'ordonnance: "<<date_ordo.getJour()<<"/"<<date_ordo.getMois()<<"/"<<date_ordo.getAnnee()<<endl;
+    cout<<"Medicament: "<<nom_medicamant<<endl;
   }
 
 
@@ -168,14 +173,24 @@ using namespace std;
     this->jour = "09";
     this->mois = "01";
     this->annee= "1997";
-
   }
 
   date::date(string jour, string mois, string annee){
     this->jour = jour;
     this->mois = mois;
     this->annee= annee;
+  }
 
+  string date::getJour(){
+    return jour;
+  }
+
+  string date::getMois(){
+    return mois;
+  }
+
+  string date::getAnnee(){
+    return annee;
   }
 
 
@@ -226,6 +241,8 @@ using namespace std;
     cout<<"dosage: "<<dosage<<endl;
     cout<<"quantite: "<<quantite<<endl;
   }
+
+
 
 int main()
 {
