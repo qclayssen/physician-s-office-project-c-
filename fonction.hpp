@@ -5,11 +5,10 @@ using namespace std;
 
 class date
 {
-  private:
+public:
     string jour;
     string mois;
     string annee;
-  public:
     date();
     date(string jour, string mois,string annee);
     void set(string jour, string mois,string annee);

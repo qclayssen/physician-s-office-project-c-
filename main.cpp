@@ -97,7 +97,7 @@ using namespace std;
 
 void patient::affiche_dossier(){
   cout<<"prenom:"<<prenomPatient<<endl;
-  cout<<"date de naissance:"<<date_naissance<<endl;
+  cout<<"date de naissance:"<<date_naissance.jour<<date_naissance.mois<<date_naissance.annee<<endl;
   cout<<"nom:"<<nomPatient<<endl;
   cout<<"nsecu:"<<nsecu<<endl;
 }
@@ -109,7 +109,7 @@ rdv::annulation_rdv(){
   this->medecin = NULL;
   this->patient = NULL;
 
-}*/
+
 
 void rdv::modif_rdv(date date, medecin medecin, patient patient){
   this->date_rdv = date_rdv;
@@ -122,10 +122,12 @@ ordonnance::annulation_ordonnance(){
 
 }
 
-
+*/
 
 
 int main()
 {
+  patient Antoine;
+  Antoine.affiche_dossier();
 
 }
