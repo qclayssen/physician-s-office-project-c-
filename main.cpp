@@ -4,6 +4,8 @@
 #include "fonction.hpp"
 using namespace std;
 
+//////////////// PATIENT /////////////////
+
   patient::patient(){
     this->nsecu="1974425365478";
     this->prenom_patient="Jean";
@@ -40,7 +42,6 @@ using namespace std;
     this->ntel=ntel;
     }
 
-
   string patient::getNomPatient(){
     return nom_patient;
   }
@@ -65,6 +66,7 @@ using namespace std;
     return nsecu;
   }
 
+//////////////// MEDECIN /////////////////
 
   medecin::medecin(){
   this->nom_medecin = "Prevert";
@@ -87,7 +89,6 @@ using namespace std;
   this->specialite= specialite;
   this->idmedecin = idmedecin;
   }
-
 
   string medecin::getNomMedecin(){
     return nom_medecin;
@@ -112,22 +113,18 @@ using namespace std;
   }
 
 
+//////////////// RDV /////////////////
 
   rdv::rdv(): medecin(),patient(){
   this->date_rdv = date("12","04","2019");
   }
 
-
-
-
-
-  rdv::rdv(date date_rdv);){
-    this->date_rdv = date;
-    this->medecin = medecin;
-    this->patient = patient;
-
+  rdv::rdv(date date_rdv): medecin(),patient(){
+    this->date_rdv = date_rdv;
   }
 
+
+//////////////// ORDONNANCE /////////////////
 
   ordonnance::ordonnance():medecin(),patient(){
     this->date_delivrance = date("12","04","2019");
@@ -148,6 +145,8 @@ using namespace std;
   }
 
 
+//////////////// DATE /////////////////
+
   date::date(){
   this->jour = "09";
   this->mois = "01";
@@ -161,6 +160,9 @@ using namespace std;
   this->annee= annee;
 
   }
+
+
+  //////////////// MEDICAMENT /////////////////
 
   medicament::medicament(){
   this->nom_medicamant ="paracetamol";
