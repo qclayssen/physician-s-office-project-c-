@@ -30,7 +30,7 @@ using namespace std;
   this->idmedecin = "35647986";
   }
 
-  medecin::medecin(){
+  medecin::medecin(string nom, string prenom, string specialite, string idmedecin){
   this->nom = nom;
   this->prenom = prenom;
   this->specialite= specialite;
@@ -38,47 +38,64 @@ using namespace std;
   }
 
 
-  rdv::rdv(date date_rdv, medecin medecin, patient patient);){
+  rdv::rdv();){
   this->date_rdv = date("12","04","2019");
   this->medecin = medecin("Zola","Emile","Radiologie","6489975");
-  this->patient = patient("");
+  this->patient = patient("Jean","Dupont",date("09","01","1997"),"AO","0699324578", "1974425365478");
   }
+
+
 
   rdv::rdv(date date_rdv, medecin medecin, patient patient);){
+    this->date_rdv = date;
+    this->medecin = medecin;
+    this->patient = patient;
 
   }
 
-
-  ordonnance::ordonnance(string idmedecin, date date_delivrance, int nsecu, medicament){
-  this->idmedecin = idmedecin;
-
+  ordonnance::ordonnance(){
+  this->medecin = idmedecin;
   this->date_delivrance = date_delivrance;
-
   this->nsecu= nsecu;
-
   this->liste_medicament = liste_medicament;
+
+  }
+
+  ordonnance::ordonnance(medecin medecin, date date_delivrance, patient patient, medicament liste_medicament){
+  this->medecin = medecin("Zola","Emile","Radiologie","6489975");
+  this->date_delivrance = date("12","04","2019");
+  this->patient= patient("Jean","Dupont",date("09","01","1997"),"AO","0699324578", "1974425365478");
+  this->medicament =medicament("paracetamol","2/jour","500","20")t;
+
+  }
+
+  date::date(){
+  this->jour = "09";
+  this->mois = "01";
+  this->annee= "1997";
 
   }
 
   date::date(int jour, int mois, int annee){
   this->jour = jour;
-
   this->mois = mois;
-
   this->annee= annee;
 
   }
+
+  medicament::medicament(){
+  this->nom ="paracetamol";
+  this->frequence = "2/jours";
+  this->dosage= "500";
+  this->quantite= "20";
+  }
+}
+
   medicament::medicament(string nom ,string frequence, int dosage,int quantite){
   this->nom = nom;
-
   this->frequence = frequence;
-
   this->dosage= dosage;
-
   this->quantite= quantite;
-
-
-
   }
 }
 
@@ -90,10 +107,16 @@ patient::affiche_dossier(){
 }
 
 rdv::annulation_rdv(){
+  this->date_rdv = delete;
+  this->medecin = NULL;
+  this->patient = NULL;
 
 }
 
-rdv::modif_rdv(){
+rdv::modif_rdv(date date, medecin medecin, patient patient){
+  this->date_rdv = date_rdv;
+  this->medecin = medecin;
+  this->patient = patient;
 
 }
 
