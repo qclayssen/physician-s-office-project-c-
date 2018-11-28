@@ -16,6 +16,7 @@ public:
     string getJour();
     string getMois();
     string getAnnee();
+    string getDateEntiere();
     void afficheDate();
 };
 
@@ -76,6 +77,7 @@ public:
     patient getPatientRdv();
     void modifRdv();
     void annulationRdv();
+    void afficheRdv();
 };
 
 

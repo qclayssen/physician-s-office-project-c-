@@ -130,6 +130,24 @@ using namespace std;
     this->medecin_rdv = medecin_rdv;
   }
 
+  void rdv::afficheRdv(){
+    cout<<"Médecin: "<<medecin_rdv.getNomMedecin()<<" "<<medecin_rdv.getPrenomMedecin()<<endl;
+    cout<<"Patient: "<<patient_rdv.getNomPatient()<<" "<<patient_rdv.getPrenomPatient()<<endl;
+    cout<<"Date du rendez-vous: "<<date_rdv.getJour()<<"/"<<date_rdv.getMois()<<"/"<<date_rdv.getAnnee()<<endl;
+    cout<<endl;
+  }
+
+  medecin rdv::getMedecinRdv(){
+    return medecin_rdv;
+  }
+
+  patient rdv::getPatientRdv(){
+    return patient_rdv;
+  }
+
+  date rdv::getDateRdv(){
+    return date_rdv;
+  }
   /*
   rdv::annulation_rdv(){
     this->date_rdv = delete;
@@ -207,6 +225,9 @@ ordonnance::ordonnance(date date_ordo, medecin medecin_ordo, patient patient_ord
     return annee;
   }
 
+  string date::getDateEntiere(){
+    return(jour+"/"+mois+"/"+annee);
+  }
 
   //////////////// MEDICAMENT /////////////////
 
@@ -262,21 +283,24 @@ int main()
 {
   list<patient> liste_patient;
   list<patient>::iterator iterpatient;
-  list<medecin> liste_medecin;
-  list<medecin>::iterator itermedecin;
-
   patient a;
   patient b("Travolta","John",date("12","02","1995"),"AA","0695478874", "12254684675");
   liste_patient.push_back(a);
   liste_patient.push_back(b);
-  for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
-    if ((*iterpatient).getNsecu()=="12254684675"){
-      (*iterpatient).affichePatient();
-    }
-  }
 
-  ordonnance ordo;
-  ordo.afficheOrdonnance();
+  list<medecin> liste_medecin;
+  list<medecin>::iterator itermedecin;
+  medecin c;
+  medecin d("Frankenstein", "Albert", "Zombologie", "666");
+  liste_medecin.push_back(c);
+  liste_medecin.push_back(d);
+
+  list<rdv> liste_rdv;
+  list<rdv>::iterator iterrdv;
+  rdv e(date("28","11","2018"),c,a);
+  rdv f(date("28","11","2018"),d,b);
+  liste_rdv.push_back(e);
+  liste_rdv.push_back(f);
 
   int option;
   int type;
@@ -286,11 +310,11 @@ int main()
   cin>>option;
   switch (option) {
     case 1:
-    cout<<"Que voulez vous chercher : \n 1) Patient \n 2) Medecin \n 3) Medicament \n 4) Rdv\n ";
+    cout<<"Que voulez vous chercher : \n 1) Patient \n 2) Medecin \n 3) Rdv \n 4) Medicament\n 5) Ordonnance \n";
     cin>>type;
       switch (type) {
         case 1:
-        cout<<"Par quoi ?\n 1) Nom\n 2) Prénom\n 3)N° de Secu\n";
+        cout<<"Par quoi ?\n 1) Nom\n 2) Prénom\n 3) N° de Secu\n";
         cin>>parquoi;
         switch (parquoi) {
           case 1:
@@ -316,10 +340,10 @@ int main()
             if ((*iterpatient).getNsecu()==recherche){
               (*iterpatient).affichePatient();
           }
-          }break
-        }
+        }break;
+      }break;
         case 2:
-        cout<<"Par quoi ?\n 1) Nom\n 2) Spécialité\n 3)n°IdMedecin\n";
+        cout<<"Par quoi ?\n 1) Nom\n 2) Spécialité\n 3) IdMedecin\n";
         cin>>parquoi;
         switch (parquoi) {
           case 1:
@@ -346,18 +370,53 @@ int main()
               (*itermedecin).afficheMedecin();
           }
           }break;
+        }break;
         case 3:
-        cout<<"Par quoi ?\n 1) MEDECIN\n 2) PATIENT\n 3) Dates";
+        cout<<"Par quoi ?\n 1) Medecin \n 2) Patient \n 3) Dates"\n;
         cin>>parquoi;
         switch (parquoi) {
           case 1:
-          cout<<"Entrez Nom ";
+          cout<<"Nom Medecin ";
           cin>>recherche;
-          for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
-            if ((*iterpatient).getNomPatient()==recherche){
-              (*iterpatient).affichePatient();
+          for (iterrdv=liste_rdv.begin();iterrdv!=liste_rdv.end();iterrdv++){
+            if ((*iterrdv).getMedecinRdv().getNomMedecin()==recherche){
+              (*iterrdv).afficheRdv();
           }
-
-        }
+          }break;
+          case 2:
+          cout<<"Nom Patient ";
+          cin>>recherche;
+          for (iterrdv=liste_rdv.begin();iterrdv!=liste_rdv.end();iterrdv++){
+            if ((*iterrdv).getPatientRdv().getNomPatient()==recherche){
+              (*iterrdv).afficheRdv();
+          }
+          }break;
+          case 3:
+          cout<<"Date ";
+          cin>>recherche;
+          for (iterrdv=liste_rdv.begin();iterrdv!=liste_rdv.end();iterrdv++){
+            if ((*iterrdv).getDateRdv().getDateEntiere()==recherche){
+              (*iterrdv).afficheRdv();
+          }
+          }break;
+        }break;
+        case 4:
+          cout<<"Nom : ";
+          cin>>recherche;
+          for (iterrdv=liste_rdv.begin();iterrdv!=liste_rdv.end();iterrdv++){
+            if ((*iterrdv).getMedecinRdv().getNomMedecin()==recherche){
+              (*iterrdv).afficheRdv();
+          }
+          }break;
+        /*case 4:
+          cout<<"Nom medicament";
+          cin>>recherche;
+          for (iterrdv=liste_medicament.begin();iterrdv!=liste_rdv.end();iterrdv++){
+            if ((*iterrdv).getNomMedicament()==recherche){
+              (*iterrdv).afficheMedicament();
+          }
+        }break;*/
+      }
+    }
   }
 }
