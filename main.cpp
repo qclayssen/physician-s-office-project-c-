@@ -163,7 +163,7 @@ using namespace std;
     cout<<"Médecin: "<<medecin_ordo.getNomMedecin()<<" "<<medecin_ordo.getPrenomMedecin()<<endl;
     cout<<"Patient: "<<patient_ordo.getNomPatient()<<" "<<patient_ordo.getPrenomPatient()<<endl;
     cout<<"Date de l'ordonnance: "<<date_ordo.getJour()<<"/"<<date_ordo.getMois()<<"/"<<date_ordo.getAnnee()<<endl;
-    cout<<"Medicament: "<<nom_medicamant<<endl;
+    cout<<"Medicament: "<<nom_medicamant<<" "<<dosage<<" mg, "<<frequence<<", Quantité: "<<quantite<<endl;
   }
 
 
@@ -176,6 +176,12 @@ using namespace std;
   }
 
   date::date(string jour, string mois, string annee){
+    this->jour = jour;
+    this->mois = mois;
+    this->annee= annee;
+  }
+
+  void date::set(string jour, string mois, string annee){
     this->jour = jour;
     this->mois = mois;
     this->annee= annee;
