@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <string>
+#include <list>
 #include "fonction.hpp"
 using namespace std;
 
@@ -31,6 +32,7 @@ using namespace std;
     cout<<"nsecu:"<<nsecu<<endl;
     cout<<"numero telephone:"<<ntel<<endl;
     cout<<"groupe sanguin:"<<groupe_sanguin<<endl;
+    cout<<endl;
   }
 
   void patient::set(string nompatient,string prenompatient,date date_naissance,string groupe_sanguin,string ntel, string nsecu){
@@ -110,6 +112,7 @@ using namespace std;
     cout<<"Nom : "<<nom_medecin<<" "<<prenom_medecin<<endl;
     cout<<"specialite: "<<specialite<<endl;
     cout<<"id: "<<idmedecin<<endl;
+    cout<<endl;
   }
 
 
@@ -168,6 +171,7 @@ ordonnance::ordonnance(date date_ordo, medecin medecin_ordo, patient patient_ord
     cout<<"Patient: "<<patient_ordo.getNomPatient()<<" "<<patient_ordo.getPrenomPatient()<<endl;
     cout<<"Date de l'ordonnance: "<<date_ordo.getJour()<<"/"<<date_ordo.getMois()<<"/"<<date_ordo.getAnnee()<<endl;
     cout<<"Medicament: "<<nom_medicamant<<" "<<dosage<<" mg, "<<frequence<<", Quantité: "<<quantite<<endl;
+    cout<<endl;
   }
 
 
@@ -256,24 +260,63 @@ ordonnance::ordonnance(date date_ordo, medecin medecin_ordo, patient patient_ord
 
 int main()
 {
+  list<patient> liste_patient;
+  list<patient>::iterator iter;
   patient a;
-  a.affichePatient();
+  patient b("Travolta","John",date("12","02","1995"),"AA","0695478874", "12254684675");
+  liste_patient.push_back(a);
+  liste_patient.push_back(b);
+  for (iter=liste_patient.begin();iter!=liste_patient.end();iter++){
+    if ((*iter).getNsecu()=="12254684675"){
+      (*iter).affichePatient();
+    }
+  }
 
   ordonnance ordo;
   ordo.afficheOrdonnance();
 
-  string option;
+  int option;
+  int type;
+  string recherche;
+  string nom;
   cout<<"Que voulez vous faire : \n 1) Afficher information \n 2) creation de fiche  \n";
   cin>>option;
+  switch (option) {
+    case 1:
+    cout<<"Que voulez vous chercher : \n 1) Patient \n 2) medecin \n 3) medicament \n 4) Rdv ";
+    cin>>type;
+      switch (type) {
+        case 1:
+        cout<<"Par quoi 1) Nom 2)";
+        cin>>recherche;
+        switch (recherche) {
+          case 1:
+          cout<<"entrer nom ";
+          cin>>nom;
+          for (iter=liste_patient.begin();iter!=liste_patient.end();iter++){
+            if ((*iter).getNomPatient()==nom){
+              (*iter).affichePatient();
+            }
+          }break;
+          case 2:
+          cout<<"entrer nom ";
+          cin>>nom;
+          for (iter=liste_patient.begin();iter!=liste_patient.end();iter++){
+            if ((*iter).getPrenomPatient()==nom){
+              (*iter).affichePatient();
+          }
+        }break;
+        case 3:
+        cout<<"entrer nom ";
+        cin>>nom;
+        for (iter=liste_patient.begin();iter!=liste_patient.end();iter++){
+          if ((*iter).getPrenomPatient()==nom){
+            (*iter).affichePatient();
+        }
+      }
+      }
 
-  string type;
-  cout<<"Que voulez vous faire : \n 1) Patient \n 2) medecin \n 3) medicament \n 4) Rdv ";
-  cin>>type;
-
-  string cible;
-  cout<<"entrer le nom ";
-  cin>>cible;
 
 
 
-}
+  }
