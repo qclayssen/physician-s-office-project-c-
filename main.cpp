@@ -261,14 +261,17 @@ ordonnance::ordonnance(date date_ordo, medecin medecin_ordo, patient patient_ord
 int main()
 {
   list<patient> liste_patient;
-  list<patient>::iterator iter;
+  list<patient>::iterator iterpatient;
+  list<medecin> liste_medecin;
+  list<medecin>::iterator itermedecin;
+
   patient a;
   patient b("Travolta","John",date("12","02","1995"),"AA","0695478874", "12254684675");
   liste_patient.push_back(a);
   liste_patient.push_back(b);
-  for (iter=liste_patient.begin();iter!=liste_patient.end();iter++){
-    if ((*iter).getNsecu()=="12254684675"){
-      (*iter).affichePatient();
+  for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
+    if ((*iterpatient).getNsecu()=="12254684675"){
+      (*iterpatient).affichePatient();
     }
   }
 
@@ -277,46 +280,84 @@ int main()
 
   int option;
   int type;
+  int parquoi;
   string recherche;
-  string nom;
   cout<<"Que voulez vous faire : \n 1) Afficher information \n 2) creation de fiche  \n";
   cin>>option;
   switch (option) {
     case 1:
-    cout<<"Que voulez vous chercher : \n 1) Patient \n 2) medecin \n 3) medicament \n 4) Rdv ";
+    cout<<"Que voulez vous chercher : \n 1) Patient \n 2) Medecin \n 3) Medicament \n 4) Rdv\n ";
     cin>>type;
       switch (type) {
         case 1:
-        cout<<"Par quoi 1) Nom 2)";
-        cin>>recherche;
-        switch (recherche) {
+        cout<<"Par quoi ?\n 1) Nom\n 2) Prénom\n 3)N° de Secu\n";
+        cin>>parquoi;
+        switch (parquoi) {
           case 1:
-          cout<<"entrer nom ";
-          cin>>nom;
-          for (iter=liste_patient.begin();iter!=liste_patient.end();iter++){
-            if ((*iter).getNomPatient()==nom){
-              (*iter).affichePatient();
-            }
+          cout<<"Entrez Nom ";
+          cin>>recherche;
+          for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
+            if ((*iterpatient).getNomPatient()==recherche){
+              (*iterpatient).affichePatient();
+          }
           }break;
           case 2:
-          cout<<"entrer nom ";
-          cin>>nom;
-          for (iter=liste_patient.begin();iter!=liste_patient.end();iter++){
-            if ((*iter).getPrenomPatient()==nom){
-              (*iter).affichePatient();
+          cout<<"Entrez Prénom : ";
+          cin>>recherche;
+          for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
+            if ((*iterpatient).getPrenomPatient()==recherche){
+              (*iterpatient).affichePatient();
           }
-        }break;
-        case 3:
-        cout<<"entrer nom ";
-        cin>>nom;
-        for (iter=liste_patient.begin();iter!=liste_patient.end();iter++){
-          if ((*iter).getPrenomPatient()==nom){
-            (*iter).affichePatient();
+          }break;
+          case 3:
+          cout<<"Entrez Numéros de Sécurité Sociale : ";
+          cin>>recherche;
+          for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
+            if ((*iterpatient).getNsecu()==recherche){
+              (*iterpatient).affichePatient();
+          }
+          }break
         }
-      }
-      }
+        case 2:
+        cout<<"Par quoi ?\n 1) Nom\n 2) Spécialité\n 3)n°IdMedecin\n";
+        cin>>parquoi;
+        switch (parquoi) {
+          case 1:
+          cout<<"Entrez nom ";
+          cin>>recherche;
+          for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
+            if ((*itermedecin).getNomMedecin()==recherche){
+              (*itermedecin).afficheMedecin();
+          }
+          }break;
+          case 2:
+          cout<<"Entrez spécialité ";
+          cin>>recherche;
+          for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
+            if ((*itermedecin).getSpecialite()==recherche){
+              (*itermedecin).afficheMedecin();
+          }
+          }break;
+          case 3:
+          cout<<"Entrez ID Medecin ";
+          cin>>recherche;
+          for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
+            if ((*itermedecin).getIdMedecin()==recherche){
+              (*itermedecin).afficheMedecin();
+          }
+          }break;
+        case 3:
+        cout<<"Par quoi ?\n 1) MEDECIN\n 2) PATIENT\n 3) Dates";
+        cin>>parquoi;
+        switch (parquoi) {
+          case 1:
+          cout<<"Entrez Nom ";
+          cin>>recherche;
+          for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
+            if ((*iterpatient).getNomPatient()==recherche){
+              (*iterpatient).affichePatient();
+          }
 
-
-
-
+        }
   }
+}
