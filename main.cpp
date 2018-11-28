@@ -153,15 +153,15 @@ using namespace std;
     this->medecin_ordo = medecin();
 }
 
-  ordonnance::ordonnance(date date_ordo, medecin medecin_ordo, patient patient_ordo): medicament(string nom_medicament ,string frequence, int dosage,int quantite){
-    this->date_ordo = date_ordo;
-    this->patient_ordo = patient_ordo;
-    this->medecin_ordo = medecin_ordo;
-    this->nom_medicamant = nom_medicament;
-    this->frequence = frequence;
-    this->dosage= dosage;
-    this->quantite= quantite;
-  }
+ordonnance::ordonnance(date date_ordo, medecin medecin_ordo, patient patient_ordo,string nom_medicament ,string frequence, int dosage,int quantite): medicament(nom_medicament,frequence,dosage,quantite){
+  this->date_ordo = date_ordo;
+  this->patient_ordo = patient_ordo;
+  this->medecin_ordo = medecin_ordo;
+  this->nom_medicamant = nom_medicament;
+  this->frequence = frequence;
+  this->dosage= dosage;
+  this->quantite= quantite;
+}
 
   void ordonnance::afficheOrdonnance(){
     cout<<"Médecin: "<<medecin_ordo.getNomMedecin()<<" "<<medecin_ordo.getPrenomMedecin()<<endl;
@@ -262,20 +262,17 @@ int main()
   ordonnance ordo;
   ordo.afficheOrdonnance();
 
-  string option1;
+  string option;
   cout<<"Que voulez vous faire : \n 1) Afficher information \n 2) creation de fiche  \n";
-  cin>>option1;
+  cin>>option;
 
-  string option2;
+  string type;
   cout<<"Que voulez vous faire : \n 1) Patient \n 2) medecin \n 3) medicament \n 4) Rdv ";
-  cin>>option2;
+  cin>>type;
 
-  string option3;
-  cout<<"Que voulez vous faire : \n 1) Patient \n 2) medecin \n 3) medicament \n 4) Rdv ";
-  cin>>option2;
-
-  option2 option3;
-  option3.option1option2();
+  string cible;
+  cout<<"entrer le nom ";
+  cin>>cible;
 
 
 

@@ -107,7 +107,7 @@ private:
 
 public:
   ordonnance();
-  ordonnance(date date_ordo,patient patient_ordo, medecin medecin_ordo);
+  ordonnance(date date_ordo, medecin medecin_ordo, patient patient_ordo,string nom_medicament ,string frequence, int dosage,int quantite);
   void set(date date_ordo,patient patient_ordo, medecin medecin_ordo);
   date getDateDeliverance();
   medecin getMedecinOrdo();
