@@ -16,7 +16,7 @@ public:
     string getJour();
     string getMois();
     string getAnnee();
-    void affiche_date();
+    void afficheDate();
 };
 
 
@@ -58,7 +58,7 @@ public:
     string getPrenomMedecin();
     string getSpecialite();
     string getIdMedecin();
-    void affiche_medecin();
+    void afficheMedecin();
 };
 
 class rdv
@@ -74,8 +74,8 @@ public:
     date getDateRdv();
     medecin getMedecinRdv();
     patient getPatientRdv();
-    void modif_rdv();
-    void annulation_rdv();
+    void modifRdv();
+    void annulationRdv();
 };
 
 
@@ -94,7 +94,7 @@ public:
     string getFrequence();
     int getDosage();
     int getQuantite();
-    void affiche_medicament();
+    void afficheMedicament();
 };
 
 
@@ -112,6 +112,6 @@ public:
   date getDateDeliverance();
   medecin getMedecinOrdo();
   patient getPatientOrdo();
-  void annulation_ordonnance();
-  void affiche_ordonnance();
+  void annulationOrdonnance();
+  void afficheOrdonnance();
 };

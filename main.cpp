@@ -10,7 +10,7 @@ using namespace std;
     this->nsecu="1974425365478";
     this->prenom_patient="Jean";
     this->nom_patient="Dupont";
-    this->date_naissance=date("09","01","1997");
+    this->date_naissance=date();
     this->groupe_sanguin="AO";
     this->ntel="0699324578";
   }
@@ -106,7 +106,7 @@ using namespace std;
     return idmedecin;
   }
 
-  void medecin::affiche_medecin(){
+  void medecin::afficheMedecin(){
     cout<<"Nom : "<<nom_medecin<<" "<<prenom_medecin<<endl;
     cout<<"specialite: "<<specialite<<endl;
     cout<<"id: "<<idmedecin<<endl;
@@ -159,7 +159,7 @@ using namespace std;
     this->nsecu= nsecu;
     this->liste_medicament = liste_medicament;
   }*/
-  void ordonnance::affiche_ordonnance(){
+  void ordonnance::afficheOrdonnance(){
     cout<<"Médecin: "<<medecin_ordo.getNomMedecin()<<" "<<medecin_ordo.getPrenomMedecin()<<endl;
     cout<<"Patient: "<<patient_ordo.getNomPatient()<<" "<<patient_ordo.getPrenomPatient()<<endl;
     cout<<"Date de l'ordonnance: "<<date_ordo.getJour()<<"/"<<date_ordo.getMois()<<"/"<<date_ordo.getAnnee()<<endl;
@@ -241,7 +241,7 @@ using namespace std;
     return quantite;
   }
 
-  void medicament::affiche_medicament(){
+  void medicament::afficheMedicament(){
     cout<<"Nom du médicament: "<<nom_medicamant<<endl;
     cout<<"frequence de prise par jour: "<<frequence<<endl;
     cout<<"dosage: "<<dosage<<endl;
@@ -256,11 +256,15 @@ int main()
   a.affichePatient();
 
   ordonnance ordo;
-  ordo.affiche_ordonnance();
+  ordo.afficheOrdonnance();
 
 
-/*
-  cout<<"Que voulez vous faire "
-  cin>>recherche*/
+  cout<<"Que voulez vous faire : \n 1) Afficher information \n 2) creation de fiche  \n 4) "
+  cin>>option1;
+
+  cout<<"Que voulez vous faire : \n 1) Patient \n 2) medecin \n 3) medicament \n 4) Rdv ";
+
+
+
 
 }
