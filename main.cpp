@@ -152,13 +152,17 @@ using namespace std;
     this->patient_ordo = patient();
     this->medecin_ordo = medecin();
 }
-/*
-  ordonnance::ordonnance(medecin medecin, date date_ordo, patient patient, medicament liste_medicament){
-    this->medecin = idmedecin;
+
+  ordonnance::ordonnance(date date_ordo, medecin medecin_ordo, patient patient_ordo): medicament(string nom_medicament ,string frequence, int dosage,int quantite){
     this->date_ordo = date_ordo;
-    this->nsecu= nsecu;
-    this->liste_medicament = liste_medicament;
-  }*/
+    this->patient_ordo = patient_ordo;
+    this->medecin_ordo = medecin_ordo;
+    this->nom_medicamant = nom_medicament;
+    this->frequence = frequence;
+    this->dosage= dosage;
+    this->quantite= quantite;
+  }
+
   void ordonnance::afficheOrdonnance(){
     cout<<"Médecin: "<<medecin_ordo.getNomMedecin()<<" "<<medecin_ordo.getPrenomMedecin()<<endl;
     cout<<"Patient: "<<patient_ordo.getNomPatient()<<" "<<patient_ordo.getPrenomPatient()<<endl;
@@ -210,15 +214,15 @@ using namespace std;
   }
 
 
-  medicament::medicament(string nommedicament ,string frequence, int dosage,int quantite){
-    this->nom_medicamant = nommedicament;
+  medicament::medicament(string nom_medicament ,string frequence, int dosage,int quantite){
+    this->nom_medicamant = nom_medicament;
     this->frequence = frequence;
     this->dosage= dosage;
     this->quantite= quantite;
   }
 
-  void medicament::set(string nommedicament ,string frequence, int dosage,int quantite){
-    this->nom_medicamant = nommedicament;
+  void medicament::set(string nom_medicament ,string frequence, int dosage,int quantite){
+    this->nom_medicamant = nom_medicament;
     this->frequence = frequence;
     this->dosage= dosage;
     this->quantite= quantite;
@@ -258,12 +262,20 @@ int main()
   ordonnance ordo;
   ordo.afficheOrdonnance();
 
-
-  cout<<"Que voulez vous faire : \n 1) Afficher information \n 2) creation de fiche  \n 4) "
+  string option1;
+  cout<<"Que voulez vous faire : \n 1) Afficher information \n 2) creation de fiche  \n";
   cin>>option1;
 
+  string option2;
   cout<<"Que voulez vous faire : \n 1) Patient \n 2) medecin \n 3) medicament \n 4) Rdv ";
+  cin>>option2;
 
+  string option3;
+  cout<<"Que voulez vous faire : \n 1) Patient \n 2) medecin \n 3) medicament \n 4) Rdv ";
+  cin>>option2;
+
+  option2 option3;
+  option3.option1option2();
 
 
 
