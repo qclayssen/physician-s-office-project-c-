@@ -507,7 +507,8 @@ int main()
           cout<<"Entrer idmedecin"<<endl;
           cin>>idmedecin;
           medecin nouveau(nom,prenom,specialite,idmedecin);
-          liste_medecin.push_back(nouveau);}break;
+          liste_medecin.push_back(nouveau);
+        }break;
         }
 
         /*case 3:
