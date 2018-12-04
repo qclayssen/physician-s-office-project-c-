@@ -1,7 +1,20 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
+class personne
+{
+protected:
+  string nom;
+  string prenom;
+public:
+  personne();
+  personne(string nom,string prenom);
+  void set(string nom,string prenom);
+  string getNom();
+  string getPrenom();
+};
 
 class date
 {
@@ -21,42 +34,33 @@ public:
 };
 
 
-class patient
+class patient : public personne
 {
 private:
-    string nom_patient;
-    string prenom_patient;
     date date_naissance;
     string groupe_sanguin;
     string ntel;
     string nsecu;
 public:
     patient();
-    patient(string nom_patient,string prenom_patient,date date_naissance,string groupe_sanguin,string ntel, string secu);
-    void set(string nom_patient,string prenom_patient,date date_naissance,string groupe_sanguin,string ntel, string secu);
-    string getNomPatient();
-    string getPrenomPatient();
+    patient(string nom,string prenom,date date_naissance,string groupe_sanguin,string ntel, string secu);
+    void set(string nom,string prenom,date date_naissance,string groupe_sanguin,string ntel, string secu);
     date getDateNaissance();
     string getGroupeSanguin();
     string getNtel();
     string getNsecu();
     void affichePatient();
-
 };
 
-class medecin
+class medecin : public personne
 {
 private:
-    string nom_medecin;
-    string prenom_medecin;
     string specialite;
     string idmedecin;
 public:
     medecin();
-    medecin(string nom_medecin,string prenom_medecin,string specialite,string idmedecin);
-    void set(string nom_medecin,string prenom_medecin,string specialite,string idmedecin);
-    string getNomMedecin();
-    string getPrenomMedecin();
+    medecin(string nom,string prenom,string specialite,string idmedecin);
+    void set(string nom,string prenom,string specialite,string idmedecin);
     string getSpecialite();
     string getIdMedecin();
     void afficheMedecin();
@@ -100,17 +104,18 @@ public:
 };
 
 
-class ordonnance : public medicament
+class ordonnance
 {
 private:
     date date_ordo;
     patient patient_ordo;
     medecin medecin_ordo;
+    vector<medicament> medicament_ordo;
 
 public:
   ordonnance();
-  ordonnance(date date_ordo, medecin medecin_ordo, patient patient_ordo,string nom_medicament ,string frequence, int dosage,int quantite);
-  void set(date date_ordo,patient patient_ordo, medecin medecin_ordo);
+  ordonnance(date date_ordo, medecin medecin_ordo, patient patient_ordo,vector<medicament> list_medoc);
+  void set(date date_ordo, medecin medecin_ordo, patient patient_ordo,vector<medicament> list_medoc);
   date getDateDeliverance();
   medecin getMedecinOrdo();
   patient getPatientOrdo();
