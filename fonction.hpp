@@ -88,14 +88,14 @@ public:
 class medicament
 {
 protected:
-    string nom_medicamant;
+    string nom_medicament ;
     string frequence;
     int dosage;
     int quantite;
 public:
     medicament();
-    medicament(string nom_medicamant,string frequence,int dosage,int quantite);
-    void set(string nom_medicamant,string frequence,int dosage,int quantite);
+    medicament(string nom_medicament,string frequence,int dosage,int quantite);
+    void set(string nom_medicament,string frequence,int dosage,int quantite);
     string getNomMedicament();
     string getFrequence();
     int getDosage();

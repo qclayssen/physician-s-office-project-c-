@@ -251,7 +251,7 @@ using namespace std;
   //////////////// MEDICAMENT /////////////////
 
   medicament::medicament(){
-    this->nom_medicamant ="paracetamol";
+    this->nom_medicament ="paracetamol";
     this->frequence = "2/jours";
     this->dosage= 500;
     this->quantite= 20;
@@ -259,14 +259,14 @@ using namespace std;
 
 
   medicament::medicament(string nom_medicament ,string frequence, int dosage,int quantite){
-    this->nom_medicamant = nom_medicament;
+    this->nom_medicament = nom_medicament;
     this->frequence = frequence;
     this->dosage= dosage;
     this->quantite= quantite;
   }
 
   void medicament::set(string nom_medicament ,string frequence, int dosage,int quantite){
-    this->nom_medicamant = nom_medicament;
+    this->nom_medicament = nom_medicament;
     this->frequence = frequence;
     this->dosage= dosage;
     this->quantite= quantite;
@@ -274,7 +274,7 @@ using namespace std;
 
 
   string medicament::getNomMedicament(){
-    return nom_medicamant;
+    return nom_medicament;
   }
 
   string medicament::getFrequence(){
@@ -290,7 +290,7 @@ using namespace std;
   }
 
   void medicament::afficheMedicament(){
-    cout<<"Nom du médicament: "<<nom_medicamant<<endl;
+    cout<<"Nom du médicament: "<<nom_medicament<<endl;
     cout<<"frequence de prise par jour: "<<frequence<<endl;
     cout<<"dosage: "<<dosage<<endl;
     cout<<"quantite: "<<quantite<<endl;
@@ -329,10 +329,9 @@ int main()
   medicament h;
   liste_medicament.push_back(h);
 
-  int option;
-  int type;
-  int parquoi;
-  string recherche;
+  int option,type,parquoi,check;
+  string recherche,nom,prenom,nsecu,jour,mois,annee,ntel,sanguin,specialite,idmedecin;
+
   cout<<"Que voulez vous faire : \n 1) Afficher information \n 2) creation de fiche  \n";
   cin>>option;
   switch (option) {
@@ -462,81 +461,118 @@ int main()
           }
         }break;
     case 2:// Creation
-      cout<<"Que voulez vous cree : \n 1) Patient \n 2) Medecin \n 3) Rdv \n 4) Ordonnance \n";
+      cout<<"Que voulez vous cree : \n 1) Patient \n 2) Medecin \n 3) Rdv \n 4) medicament \n5) Ordonnance \n";
       cin>>type;
       switch (type) {
         case 1:{//creation patient
-          string nom;
-          string prenom;
-          string nsecu;
-          string jnaissance;
-          string mnaissance;
-          string anaissance;
-          string ntel;
-          string sanguin;
-          cout<<"Entrer Nom Prénom\n 3) N° de Secu\n";
+          cout<<"Entrer Nom"<<endl;
           cin>>nom;
-          cout<<"Entrer prénom"<<endl;
+          cout<<"Entrer Prénom"<<endl;
           cin>>prenom;
-          cout<<"Entrer  N° de Secu"<<endl;
+          cout<<"Entrer N° de Secu"<<endl;
           cin>>nsecu;
+          for(check=0;check<liste_patient.size();check++)
           cout<<"Entrer jours de naissance"<<endl;
-          cin>>jnaissance;
+          cin>>jour;
           cout<<"Entrer mois de naissance"<<endl;
-          cin>>mnaissance;
+          cin>>mois;
           cout<<"Entrer annee de naissance"<<endl;
-          cin>>anaissance;
+          cin>>annee;
           cout<<"Entrer numéro de téléphone"<<endl;
           cin>>ntel;
           cout<<"Entrer groupe sanguin"<<endl;
           cin>>sanguin;
-          patient nouveau(nom,prenom,date(jnaissance,mnaissance,anaissance),sanguin,ntel,nsecu);
-          liste_patient.push_back(nouveau);
+          patient nouveau_patient(nom,prenom,date(jour,mois,annee),sanguin,ntel,nsecu);
+          liste_patient.push_back(nouveau_patient);
         }break;
         case 2:{//creation medecin
-          string nom;
-          string prenom;
-          string specialite;
-          string idmedecin;
-          cout<<"Entrer Nom";
+          cout<<"Entrer Nom"<<endl;
           cin>>nom;
-          cout<<"Entrer prénom"<<endl;
+          cout<<"Entrer Prénom"<<endl;
           cin>>prenom;
-          cout<<"Entrer  specialite"<<endl;
+          cout<<"Entrer  spécialité"<<endl;
           cin>>specialite;
-          cout<<"Entrer idmedecin"<<endl;
+          cout<<"Entrer Idmedecin"<<endl;
           cin>>idmedecin;
-          medecin nouveau(nom,prenom,specialite,idmedecin);
-          liste_medecin.push_back(nouveau);
+          medecin nouveau_medecin(nom,prenom,specialite,idmedecin);
+          liste_medecin.push_back(nouveau_medecin);
         }break;
-        }
+        case 3:{//creation rdv
+          string idmedecin;
+          string nsecu;
+          medecin medecin;
+          patient patient;
+          cout<<"Entrer jours du rendez-vous"<<endl;
+          cin>>jour;
+          cout<<"Entrer mois du rendez-vous"<<endl;
+          cin>>mois;
+          cout<<"Entrer annee du rendez-vous"<<endl;
+          cin>>annee;
+          cout<<"Entrer IdMedecin"<<endl;
+          cin>>idmedecin;
+          for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
+            if ((*itermedecin).getIdMedecin()==idmedecin){
+              medecin=(*itermedecin);
+          }}
+          cout<<"Entrer numéros de sécurité sociale du patient"<<endl;
+          cin>>nsecu;
+          for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
+            if ((*iterpatient).getNsecu()==nsecu){
+              patient=(*iterpatient);
+          }}
+          rdv nouveau_rdv(date(jour,mois,annee),medecin,patient);
+          liste_rdv.push_back(nouveau_rdv);
+        }break;
+        case 4:{//creation medicament
+          string nom_medicament;
+          string frequence;
+          int dosage;
+          int quantite;
+          cout<<"Entrer nom"<<endl;
+          cin>>nom_medicament;
+          cout<<"Entrer frequence"<<endl;
+          cin>>frequence;
+          cout<<"Entrer dosage"<<endl;
+          cin>>dosage;
+          cout<<"Entrer quantite"<<endl;
+          cin>>quantite;
 
-        /*case 3:
-        string jrdv;
-        string mrdv;
-        string ardv;
-        medecin medecin;
-        patient patient;
-        cout<<"Entrer jours du rendez-vous"<<endl;
-        cin>>jrdv;
-        cout<<"Entrer mois du rendez-vous"<<endl;
-        cin>>mrdv;
-        cout<<"Entrer annee du rendez-vous"<<endl;
-        cin>>ardv;
-        cout<<"Entrer IdMedecin"<<endl;
-        cin>>idmedecin;
-        for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
-          if ((*itermedecin).getIdMedecin()==idmedecin){
-            medecin=(*itermedecin);
-        }
-        cout<<"Entrer numéros de sécurité sociale du patient"<<endl;
-        cin>>nsecu;
-        for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
-          if ((*iterpatient).getNsecu()==nsecu){
-            patient=(*iterpatient);
-        }
-        rdv nouveau(date(jrdv,mrdv,ardv),medecin,patient);
-        liste_rdv.push_back(nouveau);}break;*/
-
+          medicament nouveau_medicament(nom_medicament,frequence,dosage,quantite);
+          liste_medicament.push_back(nouveau_medicament);
+        }break;
+        case 5:{ //creation ordonnance
+          string nom_medicament="";
+          medecin medecin;
+          patient patient;
+          medicament medoc;
+          cout<<"Entrer jours du ordonnance"<<endl;
+          cin>>jour;
+          cout<<"Entrer mois du ordonnance"<<endl;
+          cin>>mois;
+          cout<<"Entrer annee du ordonnance"<<endl;
+          cin>>annee;
+          cout<<"Entrer IdMedecin"<<endl;
+          cin>>idmedecin;
+          for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
+            if ((*itermedecin).getIdMedecin()==idmedecin){
+              medecin=(*itermedecin);
+          }}
+          cout<<"Entrer numéros de sécurité sociale du patient"<<endl;
+          cin>>nsecu;
+          for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
+            if ((*iterpatient).getNsecu()==nsecu){
+              patient=(*iterpatient);
+          }}
+          cout<<"Entrer nom de médicament pour arrêter entrer 'fin'"<<endl;
+          while(nom_medicament!="fin"){
+            cout<<"Nom de médicament:"<<endl;
+            cin>>nom_medicament;
+            for (itermedicament=liste_medicament.begin();itermedicament!=liste_medicament.end();itermedicament++){
+              if ((*itermedicament).getNomMedicament()==nom_medicament){
+                medoc=(*itermedicament);
+            }}
+          }
+        }break;
+      }
     }
 }
