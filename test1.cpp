@@ -97,8 +97,10 @@ cin>>type;
       if ((*iterpatient).getNsecu()==nsecu){
         patient=(*iterpatient);
     }
-    cout<<"Entrer nom de médicament pour arrêter entrer 1"<<endl;
-    while(nom_medicamant!=1){
+    cout<<"Entrer nom de médicament pour arrêter entrer 'fin'"<<endl;
+    while(nom_medicamant!="fin"){cout<<"nom de médicament:"<<endl;
+    cin>>nom_medicamant;
+
 
     }
 
