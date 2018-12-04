@@ -310,7 +310,7 @@ int main()
   cin>>option;
   switch (option) {
     case 1:
-    cout<<"Que voulez vous chercher : \n 1) Patient \n 2) Medecin \n 3) Rdv \n 4) Medicament\n 5) Ordonnance \n";
+    cout<<"Que voulez vous chercher : \n 1) Patient \n 2) Medecin \n 3) Rdv \n 4) Ordonnance \n";
     cin>>type;
       switch (type) {
         case 1:
@@ -401,6 +401,10 @@ int main()
           }break;
         }break;
         case 4:
+        cout<<"Par quoi ?\n 1) Medecin \n 2) Patient \n 3) Dates"\n;
+        cin>>parquoi;
+        switch (parquoi) {
+          case 1:
           cout<<"Nom : ";
           cin>>recherche;
           for (iterrdv=liste_rdv.begin();iterrdv!=liste_rdv.end();iterrdv++){
