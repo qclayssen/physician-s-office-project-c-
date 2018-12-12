@@ -88,7 +88,7 @@ public:
 class medicament
 {
 protected:
-    string nom_medicament ;
+    string nom_medicament;
     string frequence;
     int dosage;
     int quantite;
