@@ -44,12 +44,14 @@ using namespace std;
   }
 
   void patient::affichePatient(){
+    cout<<"==============="<<endl;
     cout<<"prenom:"<<prenom<<endl;
     cout<<"date de naissance:"<<date_naissance.getJour()<<"/"<<date_naissance.getMois()<<"/"<<date_naissance.getAnnee()<<endl;
     cout<<"nom:"<<nom<<endl;
     cout<<"nsecu:"<<nsecu<<endl;
     cout<<"numero telephone:"<<ntel<<endl;
     cout<<"groupe sanguin:"<<groupe_sanguin<<endl;
+    cout<<"==============="<<endl;
     cout<<endl;
   }
 
@@ -109,9 +111,11 @@ using namespace std;
   }
 
   void medecin::afficheMedecin(){
+    cout<<"==============="<<endl;
     cout<<"Nom : "<<nom<<" "<<prenom<<endl;
     cout<<"specialite: "<<specialite<<endl;
     cout<<"id: "<<idmedecin<<endl;
+    cout<<"==============="<<endl;
     cout<<endl;
   }
 
@@ -137,9 +141,11 @@ using namespace std;
   }
 
   void rdv::afficheRdv(){
+    cout<<"==============="<<endl;
     cout<<"Médecin: "<<medecin_rdv.getNom()<<" "<<medecin_rdv.getPrenom()<<endl;
     cout<<"Patient: "<<patient_rdv.getNom()<<" "<<patient_rdv.getPrenom()<<endl;
     cout<<"Date du rendez-vous: "<<date_rdv.getJour()<<"/"<<date_rdv.getMois()<<"/"<<date_rdv.getAnnee()<<endl;
+    cout<<"==============="<<endl;
     cout<<endl;
   }
 
@@ -196,12 +202,14 @@ using namespace std;
   }
 
   void ordonnance::afficheOrdonnance(){
+    cout<<"==============="<<endl;
     cout<<"Médecin: "<<medecin_ordo.getNom()<<" "<<medecin_ordo.getPrenom()<<endl;
     cout<<"Patient: "<<patient_ordo.getNom()<<" "<<patient_ordo.getPrenom()<<endl;
     cout<<"Date de l'ordonnance: "<<date_ordo.getJour()<<"/"<<date_ordo.getMois()<<"/"<<date_ordo.getAnnee()<<endl;
     for (int i=0;i<medicament_ordo.size();i++){
       cout<<"Medicament "<<i<<": "<<medicament_ordo[i].getNomMedicament()<<" "<<medicament_ordo[i].getDosage()<<" mg, "<<medicament_ordo[i].getFrequence()<<", Quantité: "<<medicament_ordo[i].getQuantite()<<endl;
     }
+    cout<<"==============="<<endl;
     cout<<endl;
   }
 
@@ -296,10 +304,13 @@ using namespace std;
   }
 
   void medicament::afficheMedicament(){
+    cout<<"==============="<<endl;
     cout<<"Nom du médicament: "<<nom_medicament<<endl;
     cout<<"frequence de prise par jour: "<<frequence<<endl;
     cout<<"dosage: "<<dosage<<endl;
     cout<<"quantite: "<<quantite<<endl;
+    cout<<"==============="<<endl;
+    cout<<endl;
   }
 
 int main()
