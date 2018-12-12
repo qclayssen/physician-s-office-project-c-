@@ -4,7 +4,9 @@
 #include <list>
 #include <vector>
 #include "fonction.hpp"
+#include "json.hpp"
 using namespace std;
+using json = nlohmann::json;
 
 //////////////// PERSONNE /////////////////
   personne::personne(){
