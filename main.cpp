@@ -780,6 +780,7 @@ int main()
             for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
               if ((*iterpatient).getNsecu()==nsecu){
                 patient_modif=(*iterpatient);
+
             }}
             liste_rdv_dates[type-1].set(date(jour,mois,annee),medecin_modif,patient_modif);
 
