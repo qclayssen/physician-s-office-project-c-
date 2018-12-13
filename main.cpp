@@ -3,6 +3,7 @@
 #include <string>
 #include <list>
 #include <vector>
+#include <fstream>
 #include "fonction.hpp"
 #include "json.hpp"
 using namespace std;
@@ -788,4 +789,41 @@ int main()
         }break;
       }
     }
-  }
+
+
+  ofstream out("out.txt");
+  streambuf *coutbuf = std::cout.rdbuf(); //save old buf
+  cout.rdbuf(out.rdbuf()); //redirect std::cout to out.txt!
+
+    cout<<"#Patient:"<<endl;
+    for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
+      (*iterpatient).affichePatient();
+    }
+    cout<<endl;
+
+    cout<<"#Medecin:"<<endl;
+    for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
+      (*itermedecin).afficheMedecin();
+    }
+    cout<<endl;
+
+    cout<<"#Medicament:"<<endl;
+    for (itermedicament=liste_medicament.begin();itermedicament!=liste_medicament.end();itermedicament++){
+      (*itermedicament).afficheMedicament();
+    }
+    cout<<endl;
+
+    cout<<"#Ordonnance:"<<endl;
+    for (iterordonnance=liste_ordonnance.begin();iterordonnance!=liste_ordonnance.end();iterordonnance++){
+      (*iterordonnance).afficheOrdonnance();
+    }
+    cout<<endl;
+
+    cout<<"#Rendez-vous:"<<endl;
+    for (iterrdv=liste_rdv.begin();iterrdv!=liste_rdv.end();iterrdv++){
+      (*iterrdv).afficheRdv();
+    }
+    cout<<endl;
+
+  cout.rdbuf(coutbuf); //reset to standard output again
+}
