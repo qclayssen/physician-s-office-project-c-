@@ -363,10 +363,14 @@ int main()
   medicament medoc;
 
 //leaveTest est une sécurité permettant de retourner au menu principal en cas de problème avec la saisie d'option
-  leaveTest=0;
+
 
   //Dans le while se trouve le menu interactif. Sortir du while quitte le programme est créer un fichier output que nous verrons plus tard.
   while(option!=4){
+    leaveTest=0;
+    recherche=NULL;
+    parquoi=NULL;
+    option=NULL;
 
     //Pour ce déplacer dans les option on entre les numéros de chaque option les Erreur de saisie sons gérée par cin.fail et default case présent dans les switch
     cout<<"Que voulez vous faire : \n 1)Afficher information \n 2)Créer nouvelle instance \n 3)Modification de rendez-vous\n 4)Quitter\n";
