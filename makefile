@@ -1,9 +1,9 @@
 all: main
 
 main:  main.o
-	g++ -o main main.o -no-pie -std=c++11 -Wall
+	g++ -o main main.o -std=c++11 -Wall
 
-main.o: main.cpp fonction.hpp
+main.o: main.cpp
 	g++ -c main.cpp -o main.o  -Wall -std=c++11
 
 clean:

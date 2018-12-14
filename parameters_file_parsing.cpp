@@ -1,3 +1,4 @@
+// Auteurs : Laine Antoine - Clayssen Quentin
 #include "./include/parameters_file_parsing.hpp"
 
 #include <sstream>
@@ -29,7 +30,7 @@ parameters_file_parsing::parameters_file_parsing()
     }
     else
     {
-        std::cerr << "Error while opening PARAMETERS_PROJECT.txt !\n";
+        std::cerr << "Erreur avec out.txt !\n";
     }
 }
 
@@ -45,42 +46,28 @@ void parameters_file_parsing::import_line(string const& line)
     string & value = token[1];
 
 
-    if(key == "header")
-        header = atoi(value.c_str());
+    if(key == "jours")
+        jours = value;
 
-    else if(key == "separator")
-    {
-        if(value == "\t")
-            separator = '\t';
-        else
-            separator = value.at(0);
-    }
-    else if(key == "k")
+    else if(key == "mois")
+        mois = value);
 
-        k = atof(value.c_str());
+    else if(key == "annee")
+        annee = value;
 
-    else if(key == "relinking_local_search_id")
-        relinking_local_search_id = value;
+    else if(key == "nom")
+        nom = value;
 
-    else if(key == "n")
-        n = atoi(value.c_str());
+    else if(key == "prenom")
+        prenom = value;
 
-    else if(key == "memetique_local_search_id")
-        memetique_local_search_id = value;
+    else if(key == "specialite")
+        specialite = value;
 
-    else if(key == "n_it")
-        n_it = atoi(value.c_str());
+    else if(key == "idmedecin")
+        idmedecin = value;
 
-    else if(key == "n_pairs_selected_parents")
-        n_pairs_selected_parents = atoi(value.c_str());
-
-    else if(key == "prob_mutation")
-        prob_mutation = atoi(value.c_str());
-
-    else if(key == "best_k")
-        best_k = atoi(value.c_str());
-
-
+//A finir
             else {}
 
         }
@@ -96,35 +83,3 @@ vector<string> parameters_file_parsing::split(string const& s, char delim)
         tokens.push_back(item);
     return tokens;
 }
-
-//=================================================
-// parameters_file_parsing : list_parameters
-//=================================================
-void parameters_file_parsing::list_parameters() const
-{
-    cout << "########### PARAMETERS ###########\n" << "header => " << header << endl
-    << "separator => " << separator << endl
-    << "k => " << k << endl
-    << "relinking_local_search_id => " << relinking_local_search_id << endl
-    << "n => " << n << endl
-    << "memetique_local_search_id => " << memetique_local_search_id << endl
-    << "n_it => " << n_it << endl
-    << "n_pairs_selected_parents => " << n_pairs_selected_parents << endl
-    << "prob_mutation => " << prob_mutation << endl
-    << "best_k => " << best_k << endl
-    << "#################################" << endl;
-}
-//=================================================
-// parameters_file_parsing : update_subset_size_large
-//=================================================
-/*void parameters_file_parsing::update_subset_size_large(unsigned const& n_genos)
-{
-    if(aco_set_size == 0)
-        aco_set_size = sqrt(n_genos);
-}*/
-
-/*
-int main(){
- parameters_file_parsing a;
- a.list_parameters();
-} */

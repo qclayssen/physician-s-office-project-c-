@@ -1,3 +1,4 @@
+// Auteurs : Laine Antoine - Clayssen Quentin
 #include <iostream>
 #include <string>
 #include <vector>
@@ -81,8 +82,6 @@ public:
     date getDateRdv();
     medecin getMedecinRdv();
     patient getPatientRdv();
-    void modifRdv();
-    void annulationRdv();
     void afficheRdv();
 };
 

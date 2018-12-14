@@ -1,4 +1,4 @@
-
+// Auteurs : Laine Antoine - Clayssen Quentin
 #include <iostream>
 #include <string>
 #include <list>
@@ -26,6 +26,7 @@ using namespace std;
     return prenom;
   }
 
+
 //////////////// PATIENT /////////////////
 
   patient::patient():personne(){
@@ -52,9 +53,9 @@ using namespace std;
     cout<<"date de naissance:"<<date_naissance.getJour()<<"/"<<date_naissance.getMois()<<"/"<<date_naissance.getAnnee()<<endl;
     cout<<"nom:"<<nom<<endl;
     cout<<"nsecu:"<<nsecu<<endl;
-    cout<<"numero telephone:"<<ntel<<endl;
+    cout<<"numéro téléphone:"<<ntel<<endl;
     cout<<"groupe sanguin:"<<groupe_sanguin<<endl;
-    cout<<"Medecin traitant:"<<medecin_traitant.getNom()<<" "<<medecin_traitant.getPrenom()<<endl;
+    cout<<"médecin traitant:"<<medecin_traitant.getNom()<<" "<<medecin_traitant.getPrenom()<<endl;
     cout<<"==============="<<endl;
     cout<<endl;
   }
@@ -169,22 +170,6 @@ using namespace std;
   date rdv::getDateRdv(){
     return date_rdv;
   }
-  /*
-  rdv::annulation_rdv(){
-    this->date_rdv = delete;
-    this->medecin = NULL;
-    this->patient = NULL;
-  }
-
-
-  void rdv::modif_rdv(date date, medecin medecin, patient patient){
-    this->date_rdv = date_rdv;
-    this->medecin = medecin;
-    this->patient = patient;
-
-  }
-
-  */
 
 
 //////////////// ORDONNANCE /////////////////
@@ -639,12 +624,12 @@ int main()
               cout<<"Entrer ID médecin traitant"<<endl;
               cin>>medecin_traitant;
               for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
-                if ((*itermedecin).getIdMedecin()==recherche){
+                if ((*itermedecin).getIdMedecin()==medecin_traitant){
                   medecin_modif=(*itermedecin);
                   unik=1;
                 }
               }
-              if(unik=0){
+              if(unik==0){
                 cout<<"Id de médecin inconnu"<<endl;
               }
             }
@@ -663,7 +648,7 @@ int main()
               cin>>idmedecin;
               unik=1;
               for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
-                if ((*itermedecin).getIdMedecin()==recherche){
+                if ((*itermedecin).getIdMedecin()==idmedecin){
                   cout<<"Identifiant non-unique"<<endl;
                   unik=0;
                 }
@@ -681,18 +666,33 @@ int main()
             cin>>mois;
             cout<<"Entrer annee du rendez-vous"<<endl;
             cin>>annee;
-            cout<<"Entrer IdMedecin"<<endl;
-            cin>>idmedecin;
-            for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
-              if ((*itermedecin).getIdMedecin()==idmedecin){
-                medecin_modif=(*itermedecin);
-            }}
-            cout<<"Entrer numéros de sécurité sociale du patient"<<endl;
-            cin>>nsecu;
-            for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
-              if ((*iterpatient).getNsecu()==nsecu){
-                patient_modif=(*iterpatient);
-            }}
+            while(unik!=1){
+              cout<<"Entrer ID médecin traitant"<<endl;
+              cin>>medecin_traitant;
+              for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
+                if ((*itermedecin).getIdMedecin()==medecin_traitant){
+                  medecin_modif=(*itermedecin);
+                  unik=1;
+                }
+              }
+              if(unik==0){
+                cout<<"Id de médecin inconnu"<<endl;
+              }
+            }
+            unik=0;
+            while(unik!=1){
+              cout<<"Entrer numéros de sécurité sociale du patient"<<endl;
+              cin>>nsecu;
+              for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
+                if ((*iterpatient).getNsecu()==nsecu){
+                  patient_modif=(*iterpatient);
+                  unik=1;
+                }
+              }
+              if(unik==0){
+                cout<<"Numéro de sécurité sociale inconnu"<<endl;
+              }
+            }
             rdv nouveau_rdv(date(jour,mois,annee),medecin_modif,patient_modif);
             liste_rdv.push_back(nouveau_rdv);
           }break;
@@ -718,17 +718,34 @@ int main()
             cin>>annee;
             cout<<"Entrer IdMedecin"<<endl;
             cin>>idmedecin;
-            for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
-              if ((*itermedecin).getIdMedecin()==idmedecin){
-                medecin_modif=(*itermedecin);
-            }}
-            cout<<"Entrer numéros de sécurité sociale du patient"<<endl;
-            cin>>nsecu;
-            for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
-              if ((*iterpatient).getNsecu()==nsecu){
-                patient_modif=(*iterpatient);
-            }}
-            cout<<"Entrer nom de médicament pour arrêter entrer 'fin'"<<endl;
+            while(unik!=1){
+              cout<<"Entrer ID médecin traitant"<<endl;
+              cin>>medecin_traitant;
+              for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
+                if ((*itermedecin).getIdMedecin()==medecin_traitant){
+                  medecin_modif=(*itermedecin);
+                  unik=1;
+                }
+              }
+              if(unik==0){
+                cout<<"Id de médecin inconnu"<<endl;
+              }
+            }
+            unik=0;
+            while(unik!=1){
+              cout<<"Entrer numéros de sécurité sociale du patient"<<endl;
+              cin>>nsecu;
+              for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
+                if ((*iterpatient).getNsecu()==nsecu){
+                  patient_modif=(*iterpatient);
+                  unik=1;
+                }
+              }
+              if(unik==0){
+                cout<<"Numéro de sécurité sociale inconnu"<<endl;
+              }
+            }
+            cout<<"Entrer nom de médicament, pour arrêter entrer 'fin'"<<endl;
             while(nom_medicament!="fin"){
               cout<<"Nom de médicament:"<<endl;
               cin>>nom_medicament;
@@ -743,7 +760,7 @@ int main()
           cout<<"Retour menu"<<endl;
           leaveTest==0;
         }break;
-      case 3:// Modification
+      case 3:// Modification de rendez vous
         cout<<"Par quoi rechercher ? : 1) IdMedecin\n 2) Numéros de sécurité sociale Patient\n 3) Dates\n Autre) Retour menu\n"<<endl;
         cin>>type;
         switch (type) {
