@@ -33,15 +33,17 @@ using namespace std;
     this->date_naissance=date();
     this->groupe_sanguin="AO";
     this->ntel="0699324578";
+    this->medecin_traitant="35647986";
   }
 
-  patient::patient(string nom, string prenom,date date_naissance,string groupe_sanguin,string ntel, string nsecu):personne(nom,prenom){
+  patient::patient(string nom, string prenom,date date_naissance,string groupe_sanguin,string ntel, string nsecu, string medecin_traitant):personne(nom,prenom){
     this->nsecu = nsecu;
     this->prenom = prenom;
     this->date_naissance = date_naissance;
     this->nom = nom;
     this->groupe_sanguin=groupe_sanguin;
     this->ntel=ntel;
+    this->medecin_traitant=medecin_traitant;
   }
 
   void patient::affichePatient(){
@@ -52,17 +54,24 @@ using namespace std;
     cout<<"nsecu:"<<nsecu<<endl;
     cout<<"numero telephone:"<<ntel<<endl;
     cout<<"groupe sanguin:"<<groupe_sanguin<<endl;
+    for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
+      if ((*itermedecin).getIdMedecin()==medecin_traitant){
+        string nom_medecin=(*itermedecin).getPrenom()+" "+(*itermedecin).getNom();
+      }
+    }
+    cout<<"medecin traitant:"<<nom_medecin<<endl;
     cout<<"==============="<<endl;
     cout<<endl;
   }
 
-  void patient::set(string nom, string prenom,date date_naissance,string groupe_sanguin,string ntel, string nsecu){
+  void patient::set(string nom, string prenom,date date_naissance,string groupe_sanguin,string ntel, string nsecu,string medecin_traitant){
     this->nsecu = nsecu;
     this->prenom = prenom;
     this->date_naissance = date_naissance;
     this->nom = nom;
     this->groupe_sanguin=groupe_sanguin;
     this->ntel=ntel;
+    this->medecin_traitant=medecin_traitant;
   }
 
   date patient::getDateNaissance(){
@@ -81,10 +90,14 @@ using namespace std;
     return nsecu;
   }
 
+  string patient::getMedecinTraitant(){
+    return medecin_traitant;
+  }
+
 //////////////// MEDECIN /////////////////
 
   medecin::medecin(): personne(){
-    this->specialite = "Proctologie";
+    this->specialite = "Radiologie";
     this->idmedecin = "35647986";
   }
 
@@ -356,7 +369,7 @@ int main()
 
 
   // Variables utilisée dans le menu interactif
-  int option,type,parquoi,quantite,dosage,leaveTest;
+  int option,type,parquoi,quantite,dosage,leaveTest,unik;
   string recherche,nom,prenom,nsecu,jour,mois,annee,ntel,sanguin,specialite,idmedecin,nom_medicament,frequence;
   medecin medecin_modif;
   patient patient_modif;
@@ -368,11 +381,13 @@ int main()
   //Dans le while se trouve le menu interactif. Sortir du while quitte le programme est créer un fichier output que nous verrons plus tard.
   while(option!=4){
     leaveTest=0;
-    parquoi=NULL;
-    option=NULL;
+    unik=0;
+    recherche=-1;
+    parquoi=-1;
+    option=-1;
 
-    //Pour ce déplacer dans les option on entre les numéros de chaque option les Erreur de saisie sons gérée par cin.fail et default case présent dans les switch
-    cout<<"Que voulez vous faire : \n 1)Afficher information \n 2)Créer nouvelle instance \n 3)Modification de rendez-vous\n 4)Quitter\n";
+    //Pour ce déplacer dans les option on entre les numéros de chaque option les de saisie sons gérée par cin.fail et default case présent dans les switch
+    cout<<"Que voulez vous faire : \n 1) Afficher information \n 2) Créer nouvelle instance \n 3) Modification de rendez-vous\n 4) Quitter\n";
     cin>>option;
     while (cin.fail()){
           cin.clear();
@@ -382,11 +397,11 @@ int main()
       }
     switch (option) {
       case 1:// Affiche
-        cout<<"Que voulez vous chercher : \n 1) Patient \n 2) Medecin \n 3) Rdv \n 4) Ordonnance \n 5) Médicament \n";
+        cout<<"Que voulez vous chercher : \n 1) Patient \n 2) Medecin \n 3) Rdv \n 4) Ordonnance \n 5) Médicament \n Autre) Retour menu\n";
         cin>>type;
         switch (type) {
           case 1:// Affiche Patient
-          cout<<"Par quoi ?\n 1) Nom\n 2) Prénom\n 3) N° de Secu\n";
+          cout<<"Par quoi ?\n 1) Nom\n 2) Prénom\n 3) N° de Secu\n Autre) Retour menu\n";
           cin>>parquoi;
           switch (parquoi) {
             case 1:// Affiche Patient nom
@@ -401,7 +416,6 @@ int main()
                 }
                 if (leaveTest==0){
                   cout<<"Nom inconnu"<<endl;
-                  break;
                 }
               }break;
             case 2: // Affiche Patient prenom
@@ -416,7 +430,6 @@ int main()
                 }
                 if (leaveTest==0){
                   cout<<"Prénom inconnu"<<endl;
-                  break;
                 }
             }break;
             case 3:// Affiche Patient nsecu
@@ -431,17 +444,16 @@ int main()
                 }
                 if (leaveTest==0){
                   cout<<"Numéro de sécurité sociale inconnu"<<endl;
-                  break;
                 }
             }break;
             default:
-            cout<<"Erreur retour menu"<<endl;
+            cout<<"Retour menu"<<endl;
             leaveTest==0;
 
           }break;
 
         case 2:// Affiche medecin
-          cout<<"Par quoi ?\n 1) Nom\n 2) Spécialité\n 3) IdMedecin\n"<<endl;
+          cout<<"Par quoi ?\n 1) Nom\n 2) Spécialité\n 3) IdMedecin\n Autre) Retour menu\n"<<endl;
           cin>>parquoi;
           switch (parquoi) {
             case 1:// Affiche medecin nom
@@ -456,7 +468,6 @@ int main()
                 }
                 if (leaveTest==0){
                   cout<<"Nom inconnu\n"<<endl;
-                  break;
                 }
             }break;
             case 2: // Affiche medecin spe
@@ -471,7 +482,6 @@ int main()
                 }
                 if (leaveTest==0){
                   cout<<"Spécialité inconnue\n"<<endl;
-                  break;
                 }
             }break;
             case 3: // Affiche medecin id
@@ -486,16 +496,14 @@ int main()
                 }
                 if (leaveTest==0){
                   cout<<"Identifiant inconnu\n"<<endl;
-                  break;
                 }
             }break;
             default:
-            cout<<"Erreur retour menu"<<endl;
-            leaveTest==0;
+            cout<<"Retour menu"<<endl;
           }break;
 
         case 3:// Affiche rdv
-          cout<<"Par quoi ?\n 1) Medecin \n 2) Patient \n 3) Dates"<<endl;
+          cout<<"Par quoi ?\n 1) Medecin \n 2) Patient \n 3) Dates \n Autre) Retour menu\n"<<endl;
           cin>>parquoi;
           switch (parquoi) {
             case 1:// Affiche rdv medec
@@ -510,7 +518,6 @@ int main()
                 }
                 if (leaveTest==0){
                   cout<<"Nom inconnu"<<endl;
-                  break;
                 }
             }break;
             case 2: // Affiche rdv patient
@@ -525,7 +532,6 @@ int main()
                 }
                 if (leaveTest==0){
                   cout<<"Nom inconnu"<<endl;
-                  break;
                 }
             }break;
             case 3:// Affiche rdv dates
@@ -546,12 +552,12 @@ int main()
                 }
             }break;
             default:
-            cout<<"Erreur retour menu"<<endl;
+            cout<<"Retour menu"<<endl;
             leaveTest==0;
           }break;
 
         case 4:// Affiche ordonnance
-          cout<<"Par quoi ?\n 1) Medecin \n 2) Patient"<<endl;
+          cout<<"Par quoi ?\n 1) Medecin \n 2) Patient \n Autre) Retour menu\n"<<endl;
           cin>>parquoi;
           switch (parquoi) {
             case 1:// Affiche ordonnance medecin
@@ -566,7 +572,6 @@ int main()
                 }
                 if (leaveTest==0){
                   cout<<"Identifiant inconnu"<<endl;
-                  break;
                 }
               }break;
 
@@ -582,11 +587,10 @@ int main()
                 }
                 if (leaveTest==0){
                   cout<<"N° de sécurité sociale inconnu"<<endl;
-                  break;
                 }
               }break;
               default:
-              cout<<"Erreur retour menu"<<endl;
+              cout<<"Retour menu"<<endl;
               leaveTest==0;
             }break;
 
@@ -602,13 +606,12 @@ int main()
             }
             if (leaveTest==0){
               cout<<"Nom inconnu"<<endl;
-              break;
             }
           }break;
 
         }break;
       case 2:// Creation
-        cout<<"Que voulez vous cree : \n 1) Patient \n 2) Medecin \n 3) Rdv \n 4) medicament \n5) Ordonnance \n"<<endl;
+        cout<<"Que voulez vous cree : \n 1) Patient \n 2) Medecin \n 3) Rdv \n 4) medicament \n5) Ordonnance \n Autre) Retour menu\n"<<endl;
         cin>>type;
         switch (type) {
           case 1:{//creation patient
@@ -616,8 +619,17 @@ int main()
             cin>>nom;
             cout<<"Entrer Prénom"<<endl;
             cin>>prenom;
-            cout<<"Entrer N° de Secu"<<endl;
-            cin>>nsecu;
+            while(unik!=1){
+              cout<<"Entrer N° de Secu"<<endl;
+              cin>>nsecu;
+              unik=1;
+              for (iterpatient=liste_patient.begin();iterpatient!=liste_patient.end();iterpatient++){
+                if ((*iterpatient).getNsecu()==nsecu){
+                  cout<<"Numéro de sécurité sociale non-unique"<<endl;
+                  unik=0;
+                }
+              }
+            }
             cout<<"Entrer jours de naissance"<<endl;
             cin>>jour;
             cout<<"Entrer mois de naissance"<<endl;
@@ -638,6 +650,17 @@ int main()
             cin>>prenom;
             cout<<"Entrer  spécialité"<<endl;
             cin>>specialite;
+            while(unik!=1){
+              cout<<"Entrer Idmedecin"<<endl;
+              cin>>idmedecin;
+              unik=1;
+              for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
+                if ((*itermedecin).getIdMedecin()==recherche){
+                  cout<<"Identifiant non-unique"<<endl;
+                  unik=0;
+                }
+              }
+            }
             cout<<"Entrer Idmedecin"<<endl;
             cin>>idmedecin;
             medecin nouveau_medecin(nom,prenom,specialite,idmedecin);
@@ -709,11 +732,11 @@ int main()
             ordonnance nouvelle_ordonnance(date(jour,mois,annee),medecin_modif,patient_modif,medicament_ordo);
           }break;
           default:
-          cout<<"Erreur retour menu"<<endl;
+          cout<<"Retour menu"<<endl;
           leaveTest==0;
         }break;
       case 3:// Modification
-        cout<<"Par quoi rechercher ? : 1) IdMedecin 2) numéros de sécurité sociale 3) par dates"<<endl;
+        cout<<"Par quoi rechercher ? : 1) IdMedecin\n 2) Numéros de sécurité sociale Patient\n 3) Dates\n Autre) Retour menu\n"<<endl;
         cin>>type;
         switch (type) {
           case 1:{// Modification par medecin
@@ -834,17 +857,17 @@ int main()
 
           }break;
           default:
-          cout<<"Erreur retour menu"<<endl;
+          cout<<"Retour menu"<<endl;
           leaveTest==0;
         }break;
       case 4:// Quitter
         continue;
       default:
-        cout<<"Erreur retour menu"<<endl;
+        cout<<"Retour menu"<<endl;
       }
     }
 
-// creation du fichier output .
+// creation du fichier output .txt dans le quel on fais appel au fonction affiche de chaque classe.
   ofstream out("out.txt");
   streambuf *coutbuf = std::cout.rdbuf();
   cout.rdbuf(out.rdbuf());

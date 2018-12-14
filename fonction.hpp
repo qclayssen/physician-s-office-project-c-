@@ -41,14 +41,16 @@ private:
     string groupe_sanguin;
     string ntel;
     string nsecu;
+    string medecin_traitant;
 public:
     patient();
-    patient(string nom,string prenom,date date_naissance,string groupe_sanguin,string ntel, string secu);
-    void set(string nom,string prenom,date date_naissance,string groupe_sanguin,string ntel, string secu);
+    patient(string nom,string prenom,date date_naissance,string groupe_sanguin,string ntel, string secu, string medecin_traitant);
+    void set(string nom,string prenom,date date_naissance,string groupe_sanguin,string ntel, string secu, string medecin_traitant);
     date getDateNaissance();
     string getGroupeSanguin();
     string getNtel();
     string getNsecu();
+    string getMedecinTraitant();
     void affichePatient();
 };
 
