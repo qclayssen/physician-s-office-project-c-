@@ -12,16 +12,18 @@ using namespace std;
 
 parameters_file_parsing::parameters_file_parsing()
 {
-    ifstream file("./PARAMETERS_PROJECT.txt");
+    ifstream file("./out.txt");
     if(file)
     {
         string line;
         while (!file.eof())
         {
             getline(file, line);
-            if (line.length() != 0 && line[0] != '#')
+            if (line=="Patient:")
             {
-                import_line(line);
+              while (line!="Medecin:"){
+                getline(file, line);
+              }
             }
         }
     }
@@ -38,9 +40,10 @@ parameters_file_parsing::parameters_file_parsing()
 
 void parameters_file_parsing::import_line(string const& line)
 {
-    vector<string> token = this->split(line, ' ');
+    vector<string> token = this->split(line, ':');
     string const& key = token[0];
     string & value = token[1];
+
 
     if(key == "header")
         header = atoi(value.c_str());

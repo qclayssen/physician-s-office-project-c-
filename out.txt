@@ -17,59 +17,50 @@ numero telephone:0695478874
 groupe sanguin:AA
 ===============
 
-===============
-prenom:Clayssen
-date de naissance:09/01/1994/01/1994
-nom:Quentin
-nsecu:123445678
-numero telephone:0661066250
-groupe sanguin:A
-===============
-
 
 #Medecin:
 ===============
-Nom : Dupont Jean
-specialite: Proctologie
-id: 35647986
+Nom:Dupont Jean
+specialite:Proctologie
+id:35647986
 ===============
 
 ===============
-Nom : Frankenstein Albert
-specialite: Zombologie
-id: 666
+Nom:Frankenstein Albert
+specialite:Zombologie
+id:666
 ===============
 
 
 #Medicament:
 ===============
-Nom du médicament: paracetamol
-frequence de prise par jour: 2/jours
-dosage: 500
-quantite: 20
+Nom du médicament:paracetamol
+frequence de prise par jour:2/jours
+dosage:500
+quantite:20
 ===============
 
 
 #Ordonnance:
 ===============
-Médecin: Dupont Jean
-Patient: Dupont Jean
-Date de l'ordonnance: 09/01/1997
-Medicament 0: paracetamol 500 mg, 2/jours, Quantité: 20
+Médecin:Dupont Jean
+Patient:Dupont Jean
+Date de l'ordonnance:09/01/1997
+Medicament 0:paracetamol 500 mg, 2/jours, Quantité: 20
 ===============
 
 
 #Rendez-vous:
 ===============
-Médecin: Dupont Jean
-Patient: Dupont Jean
-Date du rendez-vous: 28/11/2018
+Médecin:Dupont Jean
+Patient:Dupont Jean
+Date du rendez-vous:28/11/2018
 ===============
 
 ===============
-Médecin: Frankenstein Albert
-Patient: Travolta John
-Date du rendez-vous: 28/11/2018
+Médecin:Frankenstein Albert
+Patient:Travolta John
+Date du rendez-vous:28/11/2018
 ===============
 
 
