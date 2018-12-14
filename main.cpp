@@ -368,7 +368,6 @@ int main()
   //Dans le while se trouve le menu interactif. Sortir du while quitte le programme est créer un fichier output que nous verrons plus tard.
   while(option!=4){
     leaveTest=0;
-    recherche=NULL;
     parquoi=NULL;
     option=NULL;
 
