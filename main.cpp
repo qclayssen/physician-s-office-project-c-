@@ -33,7 +33,7 @@ using namespace std;
     this->date_naissance=date();
     this->groupe_sanguin="AO";
     this->ntel="0699324578";
-    this->medecin_traitant="35647986";
+    this->medecin_traitant=medecin();
   }
 
   patient::patient(string nom, string prenom,date date_naissance,string groupe_sanguin,string ntel, string nsecu, medecin medecin_traitant):personne(nom,prenom){
@@ -640,7 +640,7 @@ int main()
               cin>>medecin_traitant;
               for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
                 if ((*itermedecin).getIdMedecin()==recherche){
-                  medecin_modif=(*iterpatient);
+                  medecin_modif=(*itermedecin);
                   unik=1;
                 }
               }
