@@ -336,7 +336,7 @@ int main()
   list<patient> liste_patient;
   list<patient>::iterator iterpatient;
   patient a;
-  patient b("Travolta","John",date("12","02","1995"),"AA","0695478874", "12254684675");
+  patient b("Travolta","John",date("12","02","1995"),"AA","0695478874", "12254684675","666");
   liste_patient.push_back(a);
   liste_patient.push_back(b);
 
