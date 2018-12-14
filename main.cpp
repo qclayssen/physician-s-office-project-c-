@@ -36,7 +36,7 @@ using namespace std;
     this->medecin_traitant="35647986";
   }
 
-  patient::patient(string nom, string prenom,date date_naissance,string groupe_sanguin,string ntel, string nsecu, string medecin_traitant):personne(nom,prenom){
+  patient::patient(string nom, string prenom,date date_naissance,string groupe_sanguin,string ntel, string nsecu, medecin medecin_traitant):personne(nom,prenom){
     this->nsecu = nsecu;
     this->prenom = prenom;
     this->date_naissance = date_naissance;
@@ -54,17 +54,12 @@ using namespace std;
     cout<<"nsecu:"<<nsecu<<endl;
     cout<<"numero telephone:"<<ntel<<endl;
     cout<<"groupe sanguin:"<<groupe_sanguin<<endl;
-    for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
-      if ((*itermedecin).getIdMedecin()==medecin_traitant){
-        string nom_medecin=(*itermedecin).getPrenom()+" "+(*itermedecin).getNom();
-      }
-    }
-    cout<<"medecin traitant:"<<nom_medecin<<endl;
+    cout<<"Medecin traitant:"<<medecin_traitant.getNom()<<" "<<medecin_traitant.getPrenom()<<endl;
     cout<<"==============="<<endl;
     cout<<endl;
   }
 
-  void patient::set(string nom, string prenom,date date_naissance,string groupe_sanguin,string ntel, string nsecu,string medecin_traitant){
+  void patient::set(string nom, string prenom,date date_naissance,string groupe_sanguin,string ntel, string nsecu,medecin medecin_traitant){
     this->nsecu = nsecu;
     this->prenom = prenom;
     this->date_naissance = date_naissance;
@@ -90,7 +85,7 @@ using namespace std;
     return nsecu;
   }
 
-  string patient::getMedecinTraitant(){
+  medecin patient::getMedecinTraitant(){
     return medecin_traitant;
   }
 
@@ -336,7 +331,7 @@ int main()
   list<patient> liste_patient;
   list<patient>::iterator iterpatient;
   patient a;
-  patient b("Travolta","John",date("12","02","1995"),"AA","0695478874", "12254684675","666");
+  patient b("Travolta","John",date("12","02","1995"),"AA","0695478874", "12254684675",medecin());
   liste_patient.push_back(a);
   liste_patient.push_back(b);
 
@@ -370,7 +365,7 @@ int main()
 
   // Variables utilisée dans le menu interactif
   int option,type,parquoi,quantite,dosage,leaveTest,unik;
-  string recherche,nom,prenom,nsecu,jour,mois,annee,ntel,sanguin,specialite,idmedecin,nom_medicament,frequence;
+  string recherche,nom,prenom,nsecu,jour,mois,annee,ntel,sanguin,specialite,idmedecin,nom_medicament,frequence,medecin_traitant;
   medecin medecin_modif;
   patient patient_modif;
   medicament medoc;
@@ -640,7 +635,20 @@ int main()
             cin>>ntel;
             cout<<"Entrer groupe sanguin"<<endl;
             cin>>sanguin;
-            patient nouveau_patient(nom,prenom,date(jour,mois,annee),sanguin,ntel,nsecu);
+            while(unik!=1){
+              cout<<"Entrer ID médecin traitant"<<endl;
+              cin>>medecin_traitant;
+              for (itermedecin=liste_medecin.begin();itermedecin!=liste_medecin.end();itermedecin++){
+                if ((*itermedecin).getIdMedecin()==recherche){
+                  medecin_modif=(*iterpatient);
+                  unik=1;
+                }
+              }
+              if(unik=0){
+                cout<<"Id de médecin inconnu"<<endl;
+              }
+            }
+            patient nouveau_patient(nom,prenom,date(jour,mois,annee),sanguin,ntel,nsecu,medecin_modif);
             liste_patient.push_back(nouveau_patient);
           }break;
           case 2:{//creation medecin
